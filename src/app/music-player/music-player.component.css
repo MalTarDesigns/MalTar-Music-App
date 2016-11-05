@@ -1,0 +1,80 @@
+#music-player {
+    margin-top: 25px;
+    height: 500px;
+    width: 100%;
+}
+
+.music-player-header {
+    height: 50px;
+    background-color: black;
+}
+
+.music-player-info {
+    height: 150px;
+    background-color: #eee;
+}
+
+.track-cover {
+    float: left;
+    margin: 20px 0 0 15px;
+}
+
+.track-info {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#music-search {
+    width: 100%;
+    height: 30px;
+}
+
+.tracklist {
+    background-color: #F5F5F5;
+     max-height: 300px;
+    overflow-y:scroll; 
+}
+
+.tracklist > ul {
+    padding: 0;
+    margin: 0;
+}
+
+.tracklist > ul > li {
+    list-style: none;
+}
+
+.fa-play {
+    margin-left: 10px;
+}
+
+.track-title {
+    margin-left: 10px;
+}
+
+.track-duration {
+    margin-left: 25%;
+}
+
+.track-bpm {
+    margin-left: 25px;
+}
+
+.track-genre {
+    margin-left: 25px;
+}
+
+.track-price {
+    margin-left: 25px;
+}
+
+.fa-share-alt {
+    margin-left: 25%;
+}
+
+
+
+.audio-player {
+    height: 50px;
+    background-color: black;
+}

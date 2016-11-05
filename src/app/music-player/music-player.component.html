@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="music-player">
+        <div class="music-player-header">
+
+        </div>
+        <div class="music-player-info">
+          <div class="track-cover">
+            <img class="cover" src="http://placehold.it/120x120" alt="">
+          </div>
+          <div class="track-info">
+            <h3>Title to the song</h3>
+            <p>5.02</p>
+            <p>$29.95</p>
+            <button>Add to cart</button>
+          </div>
+        </div><!--/ .music-player-info -->
+        <div class="music-player-search">
+          <input id="music-search" type="text" name="search" placeholder="search track titles or tags">
+
+        </div>
+        <div class="tracklist">
+          <ul>
+            <li  *ngFor = "let beat of beats">
+              <img src="{{beat.cover}}" alt="">
+              <i class="fa fa-play" aria-hidden="true"></i>
+              <span class="track-title">{{beat.title}}</span>
+              <span class="track-duration">{{beat.duration}}</span>
+              <span class="track-bpm">{{beat.bpm}}</span>
+              <span class="track-genre">{{beat.genre}}</span>
+              <span class="track-price">{{beat.price}}</span>
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+              <button>Add to cart</button>
+            </li>
+          </ul>
+        </div><!--/ .tracklist -->
+
+
+        <div class="audio-player">
+          <i class="fa fa-backward" aria-hidden="true"></i>
+          <i class="fa fa-play" aria-hidden="true"></i>
+          <i class="fa fa-forward" aria-hidden="true"></i>
+
+
+        </div>
+
+
+      </div><!--/ .music-player -->
+    </div><!--/ .col -->
+  </div><!--/ .row -->
+</div><!--/ .container -->
