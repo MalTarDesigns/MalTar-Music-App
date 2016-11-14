@@ -1,3 +1,20 @@
+.table > tbody > tr > td, 
+.table > tbody > tr > th, 
+.table > tfoot > tr > td, 
+.table > tfoot > tr > th, 
+.table > thead > tr > td, 
+.table > thead > tr > th {
+    border-bottom: 1px solid #ddd !important; /*Not sure why this is not working*/
+}
+
+.add-button {
+    margin-left: 10px;
+}
+
+
+
+
+
 #music-player {
     margin-top: 25px;
     height: 500px;
@@ -31,7 +48,7 @@
 
 .tracklist {
     background-color: #F5F5F5;
-     max-height: 300px;
+    max-height: 300px;
     overflow-y:scroll; 
 }
 
@@ -44,37 +61,28 @@
     list-style: none;
 }
 
-.fa-play {
+.pic-play-title,
+.track-obj,
+.track-action {
+    display: inline-block;
+}
+
+.pic-play-title {
+    width: 35%
+}
+.track-obj {
+    width: 35%;
+}
+
+.track-action {
+    width: 20%;
+} 
+
+.tracklist > ul > li > * > span {
     margin-left: 10px;
 }
 
-.track-title {
+.add-to-cart {
     margin-left: 10px;
 }
 
-.track-duration {
-    margin-left: 25%;
-}
-
-.track-bpm {
-    margin-left: 25px;
-}
-
-.track-genre {
-    margin-left: 25px;
-}
-
-.track-price {
-    margin-left: 25px;
-}
-
-.fa-share-alt {
-    margin-left: 25%;
-}
-
-
-
-.audio-player {
-    height: 50px;
-    background-color: black;
-}

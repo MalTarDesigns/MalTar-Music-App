@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+
+
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-bottom: 40px;
+  padding-top: 50px;
+  color: #5a5a5a;
+}

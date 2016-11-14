@@ -1,52 +1,44 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div id="music-player">
-        <div class="music-player-header">
+      <h2 class="text-center">Latest Beats</h2>
+    </div>
+  </div>
+  <table class="table"> 
+    <tbody>
+      <tr *ngFor = "let beat of beats"> 
+        <th scope="row"><button (click)="playAudio()"><i  class="fa fa-play" aria-hidden="true"></i></button></th> 
+        <td>{{beat.title}}</td>
+        <td>{{beat.duration}}</td>
+        <td>{{beat.bpm}}</td>
+        <td>{{beat.genre}}</td>
+        <td>{{beat.price | currency:'USD':true}}</td>
+        <td class="text-right"><i class="fa fa-share-alt" aria-hidden="true"></i><button class="add-button">Add</button></td>
+      </tr>  
+    </tbody>
+  </table>
+</div>
 
-        </div>
-        <div class="music-player-info">
-          <div class="track-cover">
-            <img class="cover" src="http://placehold.it/120x120" alt="">
-          </div>
-          <div class="track-info">
-            <h3>Title to the song</h3>
-            <p>5.02</p>
-            <p>$29.95</p>
-            <button>Add to cart</button>
-          </div>
-        </div><!--/ .music-player-info -->
-        <div class="music-player-search">
-          <input id="music-search" type="text" name="search" placeholder="search track titles or tags">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center">Latest Songs</h2>
+    </div>
+  </div>
+  <table class="table"> 
+    <tbody>
+      <tr *ngFor = "let song of songs"> 
+        <th scope="row"><a (click)="playAudio($event)" href="{{song.url}}"><i  class="fa fa-play" aria-hidden="true"></i></a></th> 
+        <td>{{song.id}}</td>
+        <td>{{song.artist}}</td>
+        <td>{{song.title}}</td>
 
-        </div>
-        <div class="tracklist">
-          <ul>
-            <li  *ngFor = "let beat of beats">
-              <img src="{{beat.cover}}" alt="">
-              <i class="fa fa-play" aria-hidden="true"></i>
-              <span class="track-title">{{beat.title}}</span>
-              <span class="track-duration">{{beat.duration}}</span>
-              <span class="track-bpm">{{beat.bpm}}</span>
-              <span class="track-genre">{{beat.genre}}</span>
-              <span class="track-price">{{beat.price}}</span>
-              <i class="fa fa-share-alt" aria-hidden="true"></i>
-              <button>Add to cart</button>
-            </li>
-          </ul>
-        </div><!--/ .tracklist -->
+        <td class="text-right"><i class="fa fa-share-alt" aria-hidden="true"></i><button class="add-button">Add</button></td>
+      </tr>  
+    </tbody>
+  </table>
+</div>
 
-
-        <div class="audio-player">
-          <i class="fa fa-backward" aria-hidden="true"></i>
-          <i class="fa fa-play" aria-hidden="true"></i>
-          <i class="fa fa-forward" aria-hidden="true"></i>
-
-
-        </div>
-
-
-      </div><!--/ .music-player -->
-    </div><!--/ .col -->
-  </div><!--/ .row -->
-</div><!--/ .container -->
+<audio controls="controls" id="audio-player">
+Your browser does not support the audio element.
+</audio>
