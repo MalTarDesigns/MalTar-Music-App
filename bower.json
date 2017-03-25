@@ -1,0 +1,11 @@
+{
+    "name": "MalTar Music",
+    "version": "0.0.1",
+    "authors": [
+        "Jamal Johnson"
+    ],
+    "description": "My AngularJs Music App",
+    "dependencies": {
+        "angular-soundmanager2": "*"
+    }
+}

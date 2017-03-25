@@ -1,13 +1,11 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2 class="text-center">Latest Beats</h2>
-    </div>
-  </div>
+<div class="col-md-12">
+  <div class="section-heading-top"></div>
+  <h2 class="text-center">Latest Beats</h2>
+  <div class="section-heading-bottom"></div>
   <table class="table"> 
     <tbody>
       <tr *ngFor = "let beat of beats"> 
-        <th scope="row"><button (click)="playAudio()"><i  class="fa fa-play" aria-hidden="true"></i></button></th> 
+        <th scope="row"><a id="{{beat.id}}" class="fa fa-play" (click)="playAudio($event)" href="{{beat.url}}"></a></th> 
         <td>{{beat.title}}</td>
         <td>{{beat.duration}}</td>
         <td>{{beat.bpm}}</td>
@@ -18,27 +16,3 @@
     </tbody>
   </table>
 </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2 class="text-center">Latest Songs</h2>
-    </div>
-  </div>
-  <table class="table"> 
-    <tbody>
-      <tr *ngFor = "let song of songs"> 
-        <th scope="row"><a (click)="playAudio($event)" href="{{song.url}}"><i  class="fa fa-play" aria-hidden="true"></i></a></th> 
-        <td>{{song.id}}</td>
-        <td>{{song.artist}}</td>
-        <td>{{song.title}}</td>
-
-        <td class="text-right"><i class="fa fa-share-alt" aria-hidden="true"></i><button class="add-button">Add</button></td>
-      </tr>  
-    </tbody>
-  </table>
-</div>
-
-<audio controls="controls" id="audio-player">
-Your browser does not support the audio element.
-</audio>

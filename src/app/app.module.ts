@@ -1,10 +1,11 @@
+//Dependant imports
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { RoutesModule } from './app.routes';
 
+//Added modules
 import { MusicPlayerModule } from './music-player/music-player.module';
 
 //Services
@@ -23,6 +24,9 @@ import { SearchComponent } from './search/search.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ArtistComponent } from './artist/artist.component';
 import { AlbumComponent } from './album/album.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { FooterComponent } from './footer/footer.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import { AlbumComponent } from './album/album.component';
     ContactComponent,
     HomeComponent,
     ArtistComponent,
-    AlbumComponent
+    AlbumComponent,
+    AudioPlayerComponent,
+    FooterComponent,
+    SubscribeComponent
   ],
   imports: [
     BrowserModule,

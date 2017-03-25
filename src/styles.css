@@ -1,12 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-
-
-/* Padding below the footer and lighter body text */
-
 body {
   padding-bottom: 40px;
   padding-top: 50px;
   color: #5a5a5a;
+}
+
+a:focus, 
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.section-heading-top {
+  border-bottom: 2px solid red;
+  width: 90px;
+  margin: 10px auto;
+  clear: both;
+}
+
+.section-heading-bottom {
+    border-top: 2px solid red;
+    width: 90px;
+    margin: 10px auto;
+}
+
+h2 {
+  margin-top: 10px;
 }

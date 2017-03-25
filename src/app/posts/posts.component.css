@@ -1,0 +1,14 @@
+#posts {
+    padding: 0 150px 0 150px;
+    margin-bottom: 60px;
+}
+
+.posts {
+    margin-bottom: 10px; 
+}
+
+.posts .img-responsive {
+    margin: 0 auto;
+}
+
+
