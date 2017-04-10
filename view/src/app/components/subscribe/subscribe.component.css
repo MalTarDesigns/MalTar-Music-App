@@ -1,0 +1,31 @@
+#subscribe {
+    background-color: black;
+    text-transform: uppercase;
+    padding: 5% 0;
+}
+
+#subscribe h4 {
+    text-transform: uppercase;
+}
+
+#subscribe .subscribe-btn-box {
+    text-align: center;
+    padding: 5% 2%;
+}
+
+#subscribe input {
+    width: 100%;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+#subscribe .btn-default {
+    text-transform: uppercase;
+    color: black;
+    background-color: #fff;
+    font-weight: 600;
+    border-radius: 0;
+    width: 70%; 
+}
