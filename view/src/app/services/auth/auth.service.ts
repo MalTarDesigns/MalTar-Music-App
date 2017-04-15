@@ -49,7 +49,10 @@ export class AuthService {
   }
 
   loggedIn() {
-    return tokenNotExpired();
+    return tokenNotExpired('id_token'); //Note: tokenNotExpired will by default assume the token name is token 
+                                        //unless a token name is passed to it, ex: tokenNotExpired('token_name'). 
+                                        //This will be changed in a future release to automatically use the token 
+                                        //name that is set in AuthConfig.
   }
 
   logout(){
