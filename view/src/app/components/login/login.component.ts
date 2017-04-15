@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit(){
-    //debugger;
     const user = {
       username: this.username,
       password: this.password
