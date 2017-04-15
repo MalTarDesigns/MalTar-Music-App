@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RoutesModule } from './app.routes';
 import { FlashMessagesModule } from 'angular2-flash-messages'; // https://www.npmjs.com/package/angular2-flash-messages
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload'; // https://github.com/rahil471/File-upload-Angular2-Nodejs
 
 //Added modules
 import { MusicPlayerModule } from './components/music-player/music-player.module';
@@ -14,6 +15,7 @@ import { BeatsService } from './services/beats/beats.service';
 import { SpotifyService } from './services/spotify/spotify.service';
 import { AuthService } from './services/auth/auth.service';
 import { ValidateService } from './services/validate/validate.service';
+import { MessageService } from './services/message/message.service';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -57,7 +59,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     DashboardComponent,
     PricingComponent,
-    ProfileComponent
+    ProfileComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     SpotifyService, 
     AuthService, 
     ValidateService,
-    AuthGuard
+    AuthGuard,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
