@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 import { MessageService } from '../../services/message/message.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import { Message } from '../../interfaces/message'
 
 @Component({
   selector: 'profile',
@@ -12,7 +13,8 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 })
 export class ProfileComponent implements OnInit {
   user: Object;
-  message: String; // should be an array
+  messages: Message[];
+  content: String;
 
   constructor(
     private _authService:AuthService, 
@@ -29,18 +31,25 @@ export class ProfileComponent implements OnInit {
       console.log(err);
       return false;
     });
-  }
+    
+    this._messageService.getMessages()
+      .subscribe(messages => {
+        this.messages = messages;
+    });
 
-  addMessage(){
-    console.log(this.message);
-    const message = {
-      content: this.message
+  }// ngOnInit end
+
+  addMessage(event){
+    event.preventDefault();
+    var newMessage = {
+      content: this.content
     }
 
-    this._messageService.saveMessage(message).subscribe(
-      () => this._flashMessage.show('Your message was saved!!', { cssClass: 'alert-success', timeout: 3000 }),
-      error => this._flashMessage.show('Your message was not saved!!', { cssClass: 'alert-danger', timeout: 3000 })
-    );
+    this._messageService.saveMessage(newMessage)
+      .subscribe(message => {
+        this.messages.push(newMessage);
+        this.content = "";
+      });
   }
 
   // File uploads
