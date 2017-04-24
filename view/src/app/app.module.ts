@@ -39,6 +39,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PricingComponent } from './components/pages/pricing/pricing.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     DashboardComponent,
     PricingComponent,
     ProfileComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
