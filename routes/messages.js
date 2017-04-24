@@ -32,21 +32,7 @@ router.get('/messages', (req, res, next) => {
 
 // Delete Message
 router.delete('/message/:id', (req, res, next) => {
-    Message.findById(req.params.id, (err, message) => {
-        if(err) {
-            return res.status(500).json({
-                msg: 'Something went wrong',
-                error: err
-            });
-        }
-        if(!message) {
-            return res.status(500).json({
-                msg: 'No message found!',
-                error: {msg: 'Message not found'}
-            });
-        }
-    });
-    message.remove((err, result) => {
+    Message.remove({_id: req.params.id}, (err, result) => {
         if(err){
             return res.status(500).json({
                 msg: 'Something went wrong!'
