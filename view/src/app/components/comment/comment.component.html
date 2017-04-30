@@ -9,12 +9,11 @@
 </div>
   <div class="panel panel-default" *ngFor="let message of messages"> 
     <div class="panel-body">{{message.content}}</div>
-    <div class="panel-body">{{message.username}}</div>
     <div class="panel-footer">
         <div class="user">username</div>
         <div class="config">
             <a href="#">Edit</a>
-            <a (click)="deleteMessage()">Delete</a>
+            <a (click)="deleteMessage(message._id)">Delete</a>
         </div>
     </div>
 </div>

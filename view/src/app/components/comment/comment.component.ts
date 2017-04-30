@@ -15,28 +15,44 @@ export class CommentComponent implements OnInit {
   constructor(private _messageService:MessageService) { }
 
   ngOnInit() {
-    
+
     this._messageService.getMessages().subscribe(messages => {
         this.messages = messages;
     });
 
   }
 
-  addMessage(event){
-    event.preventDefault();
+  addMessage(){
     var newMessage = {
       content: this.content
   }
 
   this._messageService.saveMessage(newMessage)
     .subscribe(message => {
-      this.messages.push(newMessage);
+      this.messages.push(message);
       this.content = "";
+      //Reloads the message array to add the message
+      this._messageService.getMessages().subscribe(messages => {
+        this.messages = messages;
+      });
     });
   }
 
-  deleteMessage(){
-    console.log('start deleting');
+  deleteMessage(id: any){
+    var messages = this.messages;
+    this._messageService.deleteMessage(id).subscribe(data => {
+      if(data.n == 1) {
+        for(var i = 0; i < messages.length; i++) {
+          if(messages[i]._id == id) {
+            messages.slice(i,1);
+          }
+        }
+      }
+      //Reloads the message array to delete the message
+      this._messageService.getMessages().subscribe(messages => {
+        this.messages = messages;
+      });
+    });
   }
 
 
