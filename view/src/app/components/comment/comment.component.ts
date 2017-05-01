@@ -29,8 +29,8 @@ export class CommentComponent implements OnInit {
 
   this._messageService.saveMessage(newMessage)
     .subscribe(message => {
-      this.messages.push(message);
       this.content = "";
+      this.messages.push(message);
       //Reloads the message array to add the message
       this._messageService.getMessages().subscribe(messages => {
         this.messages = messages;
