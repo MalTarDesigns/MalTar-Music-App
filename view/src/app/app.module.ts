@@ -9,6 +9,9 @@ import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload'; // htt
 
 //Added modules
 import { MusicPlayerModule } from './components/music-player/music-player.module';
+import { ButtonModule }  from 'primeng/primeng';
+import {TabViewModule} from 'primeng/primeng';
+import {FileUploadModule} from 'primeng/primeng';
 
 //Services
 import { BeatsService } from './services/beats/beats.service';
@@ -70,7 +73,10 @@ import { CommentComponent } from './components/comment/comment.component';
     HttpModule,
     RoutesModule,
     MusicPlayerModule,
-    FlashMessagesModule
+    FlashMessagesModule,
+    ButtonModule,
+    TabViewModule,
+    FileUploadModule
   ],
   providers: [
     BeatsService, 

@@ -1,143 +1,52 @@
 <div id="profile" *ngIf="user">
-  <div class="container">
-      <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-6">
-              <div class="well well-sm">
-                  <div class="row">
-                      <div class="col-sm-6 col-md-4">
-                          <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
-                      </div>
-                      <div class="col-sm-6 col-md-8">
-                          <h4>{{user.name}}</h4>
-                          <small><cite title="San Francisco, USA">New York, USA <i class="glyphicon glyphicon-map-marker">
-                          </i></cite></small>
-                          <p>
-                              <i class="glyphicon glyphicon-envelope"></i>{{user.email}}
-                              <i class="glyphicon glyphicon-globe"></i><a href="#">www.maltarmusic.com</a>
-                              <br />
-                              <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
-                          <!-- Split button -->
-                          <div class="btn-group">
-                              <button type="button" class="btn btn-primary">
-                                  Social</button>
-                              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                  <span class="caret"></span><span class="sr-only">Social</span>
-                              </button>
-                              <ul class="dropdown-menu" role="menu">
-                                  <li><a href="#">Twitter</a></li>
-                                  <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
-                                  <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
-                                  <li class="divider"></li>
-                                  <li><a href="#">Github</a></li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              
-              <comment></comment>
-
-              <form method="post" enctype="multipart/form-data">
-                <label class="btn btn-default btn-file">
-                    Browse <input type="file" hidden>
-                </label>
-                <input type="submit" name="submit" value="submit">
-              </form>
-          </div>
-      </div>
-  </div>
-</div>
-
-<nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                            <li><a>File Upload</a></li>
-                            </ul>
-                        </div>
-                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                Sidebar
+            </div>
+            <div class="col-sm-10">  
+                <div class="row">  
+                    <div class="col-sm-3">
+                        <img src="http://placehold.it/380x500" alt="" class="img-circle img-responsive" />
                     </div>
-                </nav>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <form method="post" action="/uploads" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label for="multiple">Multiple</label>
-                                    <input type="file" class="form-control" name="multiple" ng2FileSelect [uploader]="uploader" multiple  />
-                                </div>
-                                <div class="form-group">
-                                    <label for="single">single</label>
-                                    <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />                                  
-                                </div>            
-                            </form>
-                        </div>
-                        <div class="col-md-8">
-                            <h3>File Upload with Angular 2 and Node</h3>
-                            Queue length: {{ uploader?.queue?.length }}
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th width="50%">Name</th>
-                                    <th>Size</th>
-                                    <th>Progress</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr *ngFor="let item of uploader.queue">
-                                    <td><strong>{{ item.file.name }}</strong></td>
-                                    <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
-                                    <td>
-                                        <div class="progress" style="margin-bottom: 0;">
-                                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center">
-                                        <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-                                        <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-                                        <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-                                    </td>
-                                    <td nowrap>
-                                        <button type="button" class="btn btn-success btn-xs"
-                                                (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                                            <span class="glyphicon glyphicon-upload"></span> Upload
-                                        </button>
-                                        <button type="button" class="btn btn-warning btn-xs"
-                                                (click)="item.cancel()" [disabled]="!item.isUploading">
-                                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-                                        </button>
-                                        <button type="button" class="btn btn-danger btn-xs"
-                                                (click)="item.remove()">
-                                            <span class="glyphicon glyphicon-trash"></span> Remove
-                                        </button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div>
-                                <div>
-                                    Queue progress:
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-success btn-s"
-                                        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                                    <span class="glyphicon glyphicon-upload"></span> Upload all
-                                </button>
-                                <button type="button" class="btn btn-warning btn-s"
-                                        (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-                                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
-                                </button>
-                                <button type="button" class="btn btn-danger btn-s"
-                                        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-                                    <span class="glyphicon glyphicon-trash"></span> Remove all
-                                </button>
-                            </div>
-                        </div>
+                    <div class="col-sm-9">
+                        <p-fileUpload class="pull-right" name="myfile[]" url="http://localhost:5000/upload" multiple="multiple" accept="image/*" auto="auto"></p-fileUpload>
+                        <h2>{{user.name}}</h2>
+                        <div>165 <br /> Followers </div>
+                        <div>21 <br /> Plays</div>
+                        <p>Uuummmm, this is a tasty burger! Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.</p>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="first">Default</h3>
+                        <p-tabView>
+                            <p-tabPanel header="Personal Tracks" leftIcon="fa-music">
+                                <div class="row">  
+                                    <div class="col-sm-4">
+                                        <img src="http://placehold.it/450x450" alt="" class="img-responsive" />
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <h3>Music Name</h3>
+                                        <h4>Album</h4>
+                                        <h4>4/28/2017</h4>
+                                        <p>Uuummmm, this is a tasty burger! Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.</p>
+                                    </div>
+                                </div>
+                            </p-tabPanel>
+                            <p-tabPanel header="Comments" leftIcon="fa-comment">
+                                <comment></comment>
+                            </p-tabPanel>
+                            <p-tabPanel header="Bio" leftIcon="fa-user-o">
+                                You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man.
+                            </p-tabPanel>
+                            <p-tabPanel header="Album" leftIcon="fa-headphones">
+                                Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.
+                            </p-tabPanel>
+                        </p-tabView>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
