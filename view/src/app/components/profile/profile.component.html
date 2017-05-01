@@ -7,10 +7,10 @@
             <div class="col-sm-10">  
                 <div class="row">  
                     <div class="col-sm-3">
-                        <img src="http://placehold.it/380x500" alt="" class="img-circle img-responsive" />
+                        <img src="http://placehold.it/250x250" alt="" class="img-circle img-responsive" />
                     </div>
                     <div class="col-sm-9">
-                        <p-fileUpload class="pull-right" name="myfile[]" url="http://localhost:5000/upload" multiple="multiple" accept="image/*" auto="auto"></p-fileUpload>
+                        <p-fileUpload class="pull-right" name="myfile[]" chooseLabel="Upload Music" url="http://localhost:5000/upload" multiple="multiple" accept="image/*" auto="auto"></p-fileUpload>
                         <h2>{{user.name}}</h2>
                         <div>165 <br /> Followers </div>
                         <div>21 <br /> Plays</div>
@@ -19,7 +19,6 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="first">Default</h3>
                         <p-tabView>
                             <p-tabPanel header="Personal Tracks" leftIcon="fa-music">
                                 <div class="row">  
