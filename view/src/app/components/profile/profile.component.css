@@ -23,3 +23,8 @@ color: #999;
 :host /deep/ .ui-fileupload-content {
     display: none;
 }
+
+:host /deep/ .ui-fileupload-buttonbar {
+    background: none;
+    border: none;
+}
