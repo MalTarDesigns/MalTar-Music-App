@@ -9,3 +9,17 @@ display: block;
 line-height: 1.428571429;
 color: #999;
 }
+
+/* 
+    PrimeNG Styles - Use :host /deep/ to force a style down 
+    through the child component tree into all the child component views
+*/
+
+:host /deep/ .ui-button-text {
+    text-transform: uppercase;
+    background-color: red;
+}
+
+:host /deep/ .ui-fileupload-content {
+    display: none;
+}
