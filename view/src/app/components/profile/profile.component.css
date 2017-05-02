@@ -28,3 +28,14 @@ color: #999;
     background: none;
     border: none;
 }
+
+:host /deep/.ui-fileupload-choose {
+    border: none;
+    background: none;
+    margin: 0;
+}
+
+/* Material Styles */
+:host /deep/ .mat-ink-bar{
+    background-color: red;
+}
