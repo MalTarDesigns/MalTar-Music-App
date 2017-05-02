@@ -1,5 +1,6 @@
 //Dependent imports
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -7,11 +8,15 @@ import { RoutesModule } from './app.routes';
 import { FlashMessagesModule } from 'angular2-flash-messages'; // https://www.npmjs.com/package/angular2-flash-messages
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload'; // https://github.com/rahil471/File-upload-Angular2-Nodejs
 
+
 //Added modules
 import { MusicPlayerModule } from './components/music-player/music-player.module';
-import { ButtonModule }  from 'primeng/primeng';
-import {TabViewModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/primeng';
+import {NgPipesModule} from 'ngx-pipes'; //https://www.npmjs.com/package/angular2-pipes#reverse
+import {MdTabsModule} from '@angular/material';
+import {MdSidenavModule} from '@angular/material';
+import {MdToolbarModule} from '@angular/material';
+import {MdIconModule} from '@angular/material'; //http://google.github.io/material-design-icons/#icon-font-for-the-web - https://material.io/icons/
 
 //Services
 import { BeatsService } from './services/beats/beats.service';
@@ -19,6 +24,7 @@ import { SpotifyService } from './services/spotify/spotify.service';
 import { AuthService } from './services/auth/auth.service';
 import { ValidateService } from './services/validate/validate.service';
 import { MessageService } from './services/message/message.service';
+//import { UploadService } from './services/upload/upload.service';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -69,14 +75,18 @@ import { CommentComponent } from './components/comment/comment.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     RoutesModule,
     MusicPlayerModule,
     FlashMessagesModule,
-    ButtonModule,
-    TabViewModule,
-    FileUploadModule
+    FileUploadModule,
+    NgPipesModule,
+    MdTabsModule,
+    MdSidenavModule,
+    MdToolbarModule,
+    MdIconModule
   ],
   providers: [
     BeatsService, 
@@ -85,6 +95,7 @@ import { CommentComponent } from './components/comment/comment.component';
     ValidateService,
     AuthGuard,
     MessageService
+    //UploadService
   ],
   bootstrap: [AppComponent]
 })
