@@ -37,6 +37,7 @@ const app = express();
 const users = require('./routes/users');
 //const uploads = require('./routes/uploads');
 const messages = require('./routes/messages');
+const beats = require('./routes/beats');
 
 // Port Number
 var port = 5000;
@@ -62,6 +63,7 @@ require('./config/passport')(passport);
 app.use('/users', users); // connects to the users.js file in the routes folder
 //app.use('/uploads', uploads);
 app.use('/api/v1', messages);
+app.use('/api/v1', beats);
 
 // Index Route
 app.get('/', function (req, res) {
