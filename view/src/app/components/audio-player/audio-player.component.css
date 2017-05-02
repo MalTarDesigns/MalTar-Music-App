@@ -1,32 +1,6 @@
-#audio-player-col {
-    height:1000px;
-    padding: 0;
-    -webkit-box-shadow: 0 8px 6px -6px #999;
-    -moz-box-shadow: 0 8px 6px -6px #999;
-    box-shadow: -8px 8px 6px -6px #999;
-}
-
-#audio-player-col dd {
-    margin-left: 20px;
-}
-
-.time-start,
-.time-end,
-.repeat,
-.shuffle {
-    display: inline-block;
-}
-
-.time-end,
-.shuffle {
-    float: right;
-}
-
-.progress {
-    height: 5px;
-}
-
-.progress-bar {
-    background-color: red;
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+  Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
 }
 
