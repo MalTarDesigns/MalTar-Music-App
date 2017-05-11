@@ -35,9 +35,9 @@ mongoose.connection.on('error', function(err){
 const app = express();
 
 const users = require('./routes/users');
-//const uploads = require('./routes/uploads');
 const messages = require('./routes/messages');
 const beats = require('./routes/beats');
+const uploads = require('./routes/uploads');
 
 // Port Number
 var port = 5000;
@@ -64,6 +64,7 @@ app.use('/users', users); // connects to the users.js file in the routes folder
 //app.use('/uploads', uploads);
 app.use('/api/v1', messages);
 app.use('/api/v1', beats);
+app.use('/upload', uploads);
 
 // Index Route
 app.get('/', function (req, res) {
@@ -78,38 +79,6 @@ app.get('*', function (req, res) {
 var server = app.listen(port, () => {
     console.log('Go to localhost ' + port + ' in your browser');
 });
-
-
-// Works on the server side but not in dev with angular ??? find out why and put this in another file ... wouldn't work in routes file ??
-//File Upload
-//********************* */
-var storage = multer.diskStorage({ //multers disk storage settings
-    destination: function (req, file, cb) {
-        cb(null, './upload');
-    },
-    filename: function (req, file, cb) {
-        var datetimestamp = Date.now();
-        cb(null, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
-    }
-});
-
-var upload = multer({ //multer settings
-                storage: storage
-            }).single('file');
-
-/** API path that will upload the files */
-app.post('/upload', function(req, res) {
-    upload(req,res,function(err){
-  console.log(req.file);
-        if(err){
-              res.json({error_code:1,err_desc:err});
-              return;
-        }
-          res.json({error_code:0,err_desc:null});
-    });
-});
-
-
 
 
 
