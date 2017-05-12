@@ -9,15 +9,17 @@
   },
   "author": "Jamal Johnson",
   "license": "ISC",
-  "dependencies":{
-    "express":"*",
-    "mongoose":"*",
-    "bcryptjs":"*",
-    "cors":"*",
-    "jsonwebtoken":"*",
-    "body-parser":"*",
-    "passport":"*",
-    "passport-jwt":"*",
-    "multer": "*"
+  "dependencies": {
+    "aws-sdk": "^2.50.0",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "multer": "*",
+    "multer-s3": "^2.7.0",
+    "passport": "*",
+    "passport-jwt": "*"
   }
 }
