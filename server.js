@@ -38,6 +38,7 @@ const users = require('./routes/users');
 const messages = require('./routes/messages');
 const beats = require('./routes/beats');
 const uploads = require('./routes/uploads');
+const blogs = require('./routes/blogs');
 
 // Port Number
 var port = 5000;
@@ -52,7 +53,8 @@ app.use(cors()); // allows us to make a request to your api from a different dom
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Body Parser Middleware
-app.use(bodyParser.json()); // parses incoming resquest body
+app.use(bodyParser.urlencoded({extended: true})); // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()); // parse application/json
 
 // Passport Middleware - https://www.npmjs.com/package/passport-jwt
 app.use(passport.initialize()); // allows you to authenticate and protect certian routes with a token
@@ -60,11 +62,12 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
+//Route Paths
 app.use('/users', users); // connects to the users.js file in the routes folder
-//app.use('/uploads', uploads);
 app.use('/api/v1', messages);
 app.use('/api/v1', beats);
 app.use('/upload', uploads);
+app.use('/blogs', blogs);
 
 // Index Route
 app.get('/', function (req, res) {
