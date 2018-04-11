@@ -25,30 +25,29 @@ export class CommentComponent implements OnInit {
   addMessage(){
     var newMessage = {
       content: this.content
-  }
+    }
 
-  this._messageService.saveMessage(newMessage)
-    .subscribe(message => {
-      this.content = "";
+    this._messageService.saveMessage(newMessage).subscribe(message => {
+      this.content = '';
       this.messages.push(message);
-      //Reloads the message array to add the message
+      // Reloads the message array to add the message
       this._messageService.getMessages().subscribe(messages => {
         this.messages = messages;
       });
     });
   }
 
-  deleteMessage(id: any){
-    var messages = this.messages;
+  deleteMessage(id: any) {
+    const messages = this.messages;
     this._messageService.deleteMessage(id).subscribe(data => {
-      if(data.n == 1) {
+      if(data.n === 1) {
         for(var i = 0; i < messages.length; i++) {
-          if(messages[i]._id == id) {
-            messages.slice(i,1);
+          if(messages[i]._id === id) {
+            messages.slice(i, 1);
           }
         }
       }
-      //Reloads the message array to delete the message
+      // Reloads the message array to delete the message
       this._messageService.getMessages().subscribe(messages => {
         this.messages = messages;
       });

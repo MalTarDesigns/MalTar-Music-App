@@ -9,10 +9,10 @@ export class AuthGuard implements CanActivate {
 
   // Guard that will protect the links from users that are not signed in
   canActivate(){
-    if(this._authService.loggedIn()){
+    if(this._authService.loggedIn()) {
       return true;
     } else {
-      this._router.navigate(['login'])
+      this._router.navigate(['login']);
       return false;
     }
   }

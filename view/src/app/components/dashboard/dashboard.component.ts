@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BeatService } from '../../services/beat/beat.service';
 
 @Component({
   selector: 'dashboard',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  beats: Object; 
+  constructor(private _beatService: BeatService) { }
 
   ngOnInit() {
+    this._beatService.getBeats().subscribe(beats => {
+      this.beats = beats
+    });
   }
 
+  
 }

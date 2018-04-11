@@ -4,7 +4,7 @@
   <div class="section-heading-bottom"></div>
   <table class="table"> 
     <tbody>
-      <tr *ngFor = "let beat of beats"> 
+      <tr *ngFor = "let beat of beat"> 
         <th scope="row"><a id="{{beat.id}}" class="fa fa-play" (click)="playAudio($event)" href="{{beat.url}}"></a></th> 
         <td>{{beat.title}}</td>
         <td>{{beat.duration}}</td>

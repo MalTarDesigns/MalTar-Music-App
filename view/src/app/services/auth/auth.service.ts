@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
-import { tokenNotExpired } from 'angular2-jwt'; // https://github.com/auth0/angular2-jwt
+// import { tokenNotExpired } from 'angular2-jwt'; // https://github.com/auth0/angular2-jwt
 
 @Injectable()
 export class AuthService {
+  domain = "http://localhost:5000/"; // Development Domain - Not Needed in Production
   authToken: any;
   user: any;
     
@@ -16,14 +17,14 @@ export class AuthService {
   registerUser(user){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-      return this._http.post('http://localhost:5000/users/register', user, {headers: headers})
+      return this._http.post(this.domain + 'users/register', user, {headers: headers})
         .map(res => res.json()); //returns the json data from the new registered user (api)
     }
 
   authenticateUser(user){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
-      return this._http.post('http://localhost:5000/users/authenticate', user, {headers: headers})
+      return this._http.post(this.domain + 'users/authenticate', user, {headers: headers})
         .map(res => res.json());
   }
 
@@ -32,7 +33,7 @@ export class AuthService {
     this.loadToken(); //gets the user data from this function
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-      return this._http.get('http://localhost:5000/users/profile', {headers: headers})
+      return this._http.get(this.domain + 'users/profile', {headers: headers})
         .map(res => res.json());
   }
 
@@ -49,7 +50,8 @@ export class AuthService {
   }
 
   loggedIn() {
-    return tokenNotExpired('id_token'); //Note: tokenNotExpired will by default assume the token name is token 
+    // return tokenNotExpired('id_token'); 
+    //Note: tokenNotExpired will by default assume the token name is token 
                                         //unless a token name is passed to it, ex: tokenNotExpired('token_name'). 
                                         //This will be changed in a future release to automatically use the token 
                                         //name that is set in AuthConfig.

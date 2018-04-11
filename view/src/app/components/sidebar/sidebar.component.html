@@ -1,0 +1,37 @@
+ <!-- Sidebar -->
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <a (click)="menuToggle()" class="btn btn-default" id="menu-toggle">
+            <i class="material-icons">list</i>
+        </a>
+        <li class="sidebar-brand">
+            <a href="#">
+                Start Bootstrap
+            </a>
+        </li>
+        <li>
+            <a routerLink="/dashboard" routerLinkActive="active"><i class="fa fa-home" aria-hidden="true"></i>Dashboard</a>
+        </li>
+        <li>
+            <a routerLink="/profile" routerLinkActive="active"><i class="fa fa-user" aria-hidden="true"></i>Profile</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-play" aria-hidden="true"></i>Personal Tracks</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-music" aria-hidden="true"></i>Artists</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>Events</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-picture-o" aria-hidden="true"></i>Photos</a>
+        </li>
+        <li>
+            <a routerLink="/blog" routerLinkActive="active"><i class="fa fa-newspaper-o" aria-hidden="true"></i>Blog</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Shop</a>
+        </li>
+    </ul>
+</div><!-- /#sidebar-wrapper -->

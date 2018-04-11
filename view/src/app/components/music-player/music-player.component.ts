@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BeatsService } from '../../services/beats/beats.service';
+import { BeatService } from '../../services/beat/beat.service';
 declare var $:any; // This allows you to use jQuery below
 
 @Component({
@@ -10,7 +10,7 @@ declare var $:any; // This allows you to use jQuery below
 })
 export class MusicPlayerComponent implements OnInit {
 
-  private beats; // creats the var beats for the constructor
+  private beat; // creats the var beat for the constructor
   private songs;
   private audio = new Audio();
   private trackId;
@@ -23,10 +23,10 @@ export class MusicPlayerComponent implements OnInit {
   audio_index = 1;
 
   //creates a intance of the service
-  constructor(private _beatService: BeatsService) { 
+  constructor(private _beatService: BeatService) { 
     
 
-    //this.songs = _beatService.getSongs(); // this should be placed in ngOnInit
+    //this.songs = _beatervice.getSongs(); // this should be placed in ngOnInit
 
   }
 
@@ -62,9 +62,7 @@ playAudio(event) {
 }
 
   ngOnInit() {
-    this.beats = this._beatService.getBeats();
-    
-    
+    this.beat = this._beatService.getMusic();
   }
 
 } /* ends export class */

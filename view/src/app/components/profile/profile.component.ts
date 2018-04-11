@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
-//import { FileUploader } from 'ng2-file-upload';
-import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
   selector: 'profile',
@@ -11,12 +9,11 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 })
 export class ProfileComponent implements OnInit {
   user: Object;
-  uploadedFiles: any[] = [];
+  
 
   constructor(
     private _authService:AuthService, 
-    private _router:Router,
-    private _flashMessage:FlashMessagesService
+    private _router:Router
   ) {  }
 
   ngOnInit() {
@@ -29,17 +26,5 @@ export class ProfileComponent implements OnInit {
     });
 
   }// ngOnInit end
-
-  onUpload(event) {
-    console.log('File is about to upload....');
-        for(let file of event.files) {
-          console.log(file);
-            this.uploadedFiles.push(file);
-        }
-    }
-    
-
-  // File uploads
-  //public uploader:FileUploader = new FileUploader({url:'http://localhost:5000/upload'});
 
 }
