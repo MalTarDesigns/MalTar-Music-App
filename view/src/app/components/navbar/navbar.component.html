@@ -12,14 +12,12 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a  routerLink="/" routerLinkActive="active">Home</a></li>
-          <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-          <li><a routerLink="/search" routerLinkActive="active">Spotify Search</a></li>
-          <li><a *ngIf="!_authService.loggedIn()" routerLink="/pricing" routerLinkActive="active">Pricing</a></li>
+          <!-- <li><a *ngIf="!_authService.loggedIn()" routerLink="/pricing" routerLinkActive="active">Pricing</a></li>
           <li><a *ngIf="_authService.loggedIn()" routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
-          <li><a *ngIf="_authService.loggedIn()" routerLink="/profile" routerLinkActive="active">Profile</a></li>
-          <li><a *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a></li>
-          <li><a *ngIf="!_authService.loggedIn()" routerLink="/register" routerLinkActive="active">Sign up</a></li>
-          <li><a *ngIf="_authService.loggedIn()" (click)="onLogoutClick()">Logout</a></li>
+          <li><a *ngIf="_authService.loggedIn()" routerLink="/profile" routerLinkActive="active">Profile</a></li> -->
+          <li><a [routerLink]="['/login']" routerLinkActive="active">Login</a></li>
+          <li><a [routerLink]="['/signup']" routerLinkActive="active">Sign up</a></li>
+          <li><a (click)="onLogoutClick()">Logout</a></li>
        </ul>
     </div>
   </div>

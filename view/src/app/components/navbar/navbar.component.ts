@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class NavbarComponent implements OnInit {
 
     constructor(
-      private _authService: AuthService,
+      // private _authService: AuthService,
       private _router: Router,
       // private _flashMessage: FlashMessagesService
     ) { }
@@ -20,13 +20,14 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogoutClick() {
-    this._authService.logout();
+    console.log('log out');
+    // this._authService.logout();
     //  this._flashMessage.show('You are now logged out', {
     //       cssClass: 'alert-success',
     //       timeout: 3000
     //     });
-        this._router.navigate(['login']);
-        return false;
+        // this._router.navigate(['login']);
+        // return false;
   }
 
 }
