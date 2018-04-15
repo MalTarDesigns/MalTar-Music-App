@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MessageService } from '../../services/message/message.service';
-import { Message } from '../../interfaces/message'
 
 @Component({
-  selector: 'comment',
+  selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent implements OnInit {
-  messages: Message[];
+  messages; // Message[];
   content: String;
 
-  constructor(private _messageService:MessageService) { }
+  constructor(private _messageService: MessageService) { }
 
   ngOnInit() {
 
@@ -22,10 +21,10 @@ export class CommentComponent implements OnInit {
 
   }
 
-  addMessage(){
-    var newMessage = {
+  addMessage() {
+    const newMessage = {
       content: this.content
-    }
+    };
 
     this._messageService.saveMessage(newMessage).subscribe(message => {
       this.content = '';
@@ -40,9 +39,9 @@ export class CommentComponent implements OnInit {
   deleteMessage(id: any) {
     const messages = this.messages;
     this._messageService.deleteMessage(id).subscribe(data => {
-      if(data.n === 1) {
-        for(var i = 0; i < messages.length; i++) {
-          if(messages[i]._id === id) {
+      if (data.n === 1) {
+        for (let i = 0; i < messages.length; i++) {
+          if (messages[i]._id === id) {
             messages.slice(i, 1);
           }
         }

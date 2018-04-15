@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
+import { AuthService } from '../../auth/services/auth-service/auth.service';
 
 @Component({
-  selector: 'profile',
+  selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
   user: Object;
-  
+
 
   constructor(
-    private _authService:AuthService, 
+    private _authService:AuthService,
     private _router:Router
   ) {  }
 

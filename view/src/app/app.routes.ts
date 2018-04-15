@@ -1,35 +1,21 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { PricingComponent } from './pages/pricing/pricing.component';
-import { ProfileComponent } from './components/profile/profile.component';
-
-import { AuthGuard } from './guards/auth.guard';
-import { AppComponent } from './app.component';
-
-// TODO: Added to module
-
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: '',
+    loadChildren: './home/home.module#HomeModule'
+  },
+  {
+    path: 'auth',
+    loadChildren: './auth/auth.module#AuthModule'
+  }
+];
 @NgModule({
-  imports: [
-    RouterModule.forRoot([
-        {path: '', component: HomeComponent},
-        {path: 'signup', component: RegisterComponent},
-        {path: 'login', component: LoginComponent},
-        // {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-        // {path: 'about', component: AboutComponent},
-        // {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-        // {path: 'pricing', component: PricingComponent},
-        // {path: 'contact', component: ContactComponent}
-    ])
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule]
 })
-export class RoutesModule {}
+export class AppRoutes {}
 
+// ./payroll/payroll.module#PayrollModule
