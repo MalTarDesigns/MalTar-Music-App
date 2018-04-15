@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { FlashMessagesService } from 'angular2-flash-messages'; // https://www.npmjs.com/package/angular2-flash-messages
-import { ValidateService } from '../../services/validate/validate.service';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../services/auth-service/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +15,6 @@ export class RegisterComponent implements OnInit {
   confirmPassword: string;
 
   constructor(
-    private _validateService: ValidateService,
     // private _flashMessage: FlashMessagesService,
     // private _authService: AuthService,
     private _router: Router
@@ -33,20 +31,6 @@ export class RegisterComponent implements OnInit {
       confirmPassword: this.confirmPassword
     };
     console.log(user);
-
-    // Required Fields
-    if (!this._validateService.validateRegister(user)) {
-      console.log('Please fill in all fields');
-      // this._flashMessage.show('Please fill in all fields', { cssClass: 'alert-danger', timeout: 3000 });
-      return false;
-    }
-
-    // Validate Email
-    if (!this._validateService.validateEmail(user.email)) {
-      // console.log('Please use a valid email');
-      // this._flashMessage.show('Please use a valid email', { cssClass: 'alert-danger', timeout: 3000 });
-      return false;
-    }
 
     // Register User
     // this._authService.registerUser(user).subscribe(data => {

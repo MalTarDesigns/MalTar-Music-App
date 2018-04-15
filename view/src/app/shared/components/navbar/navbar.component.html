@@ -7,16 +7,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" routerLink="/" routerLinkActive="active">MalTar Music</a>
+      <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active">MalTar Music</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a  routerLink="/" routerLinkActive="active">Home</a></li>
+          <li class="active"><a  [routerLink]="['/']" routerLinkActive="active">Home</a></li>
           <!-- <li><a *ngIf="!_authService.loggedIn()" routerLink="/pricing" routerLinkActive="active">Pricing</a></li>
           <li><a *ngIf="_authService.loggedIn()" routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
           <li><a *ngIf="_authService.loggedIn()" routerLink="/profile" routerLinkActive="active">Profile</a></li> -->
-          <li><a [routerLink]="['/login']" routerLinkActive="active">Login</a></li>
-          <li><a [routerLink]="['/signup']" routerLinkActive="active">Sign up</a></li>
+          <li><a [routerLink]="['auth/login']" routerLinkActive="active">Login</a></li>
+          <li><a [routerLink]="['auth/signup']" routerLinkActive="active">Sign up</a></li>
           <li><a (click)="onLogoutClick()">Logout</a></li>
        </ul>
     </div>
