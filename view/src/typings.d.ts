@@ -4,7 +4,14 @@ interface NodeModule {
   id: string;
 }
 
-export interface IBeat {
+interface IUser {
+  email: String
+  password: String
+  confirmPassword?: String
+  name?: String
+  role?: String
+}
+interface IBeat {
   title: String
   producer: String
   artworkUrl?: String

@@ -1,51 +1,35 @@
-h1.title { 
-	font-size: 50px;
-	font-weight: 400; 
+form { margin: 0px 10px; }
+
+h2 {
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
-hr{
-	width: 10%;
-	color: #fff;
+.container { max-width: 360px; }
+
+.divider {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
-.form-group{
-	margin-bottom: 15px;
+.divider hr {
+  margin: 7px 0px;
+  width: 35%;
 }
 
-label{
-	margin-bottom: 15px;
+.left { float: left; }
+
+.right { float: right; }
+
+.maltarmusic-logo {
+  width: 60%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 15px;
 }
 
-input,
-input::-webkit-input-placeholder {
-    font-size: 11px;
-    padding-top: 3px;
-}
-
-.main-login{
- 	background-color: #fff;
-    /* shadows and rounded borders */
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-
-}
-
-.main-center{
- 	margin-top: 30px;
- 	margin: 0 auto;
- 	max-width: 330px;
-	/*padding: 40px 40px;*/
-}
-
-.login-button{
-	margin-top: 5px;
-}
-
-.login-register{
-	font-size: 11px;
-	text-align: center;
+.panel-primary {
+  margin-top: 15px;
+  border-color: #000;
 }
