@@ -1,5 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-body {
-    padding-top: 70px;
+a {
+  cursor: pointer;
+}
+
+.text-danger {
+  color: #c40000;
+}
+
+.has-error .control-label {
+  color: #333;
 }
