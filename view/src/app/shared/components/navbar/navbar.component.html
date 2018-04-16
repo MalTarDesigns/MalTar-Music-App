@@ -15,8 +15,8 @@
           <!-- <li><a *ngIf="!_authService.loggedIn()" routerLink="/pricing" routerLinkActive="active">Pricing</a></li>
           <li><a *ngIf="_authService.loggedIn()" routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
           <li><a *ngIf="_authService.loggedIn()" routerLink="/profile" routerLinkActive="active">Profile</a></li> -->
-          <li><a [routerLink]="['auth/login']" routerLinkActive="active">Login</a></li>
-          <li><a [routerLink]="['auth/signup']" routerLinkActive="active">Sign up</a></li>
+          <li><a [routerLink]="['/login']" routerLinkActive="active">Login</a></li>
+          <li><a [routerLink]="['/signup']" routerLinkActive="active">Sign up</a></li>
           <li><a (click)="onLogoutClick()">Logout</a></li>
        </ul>
     </div>

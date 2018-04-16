@@ -6,13 +6,11 @@ import { AppRoutes } from './app.routes';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 
-
 import { StoreModule } from '@ngrx/store';
-import { metaReducers } from './store/reducers/root.reducer';
-
-// not used in production
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // not used in production
+import { reducers, CustomSerializer } from './store';
+import { metaReducers } from './store/reducers';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,10 +19,16 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     SharedModule,
     AppRoutes,
-    AngularFireModule.initializeApp(environment.firebase)
-    StoreModule.forRoot({ }, {metaReducers})
+    AngularFireModule.initializeApp(environment.firebase),
+    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreRouterConnectingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: RouterStateSerializer,
+      useClass: CustomSerializer
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
