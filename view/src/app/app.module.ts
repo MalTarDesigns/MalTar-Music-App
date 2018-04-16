@@ -7,6 +7,12 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 
 
+import { StoreModule } from '@ngrx/store';
+import { metaReducers } from './store/reducers/root.reducer';
+
+// not used in production
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -16,6 +22,7 @@ import { environment } from '../environments/environment';
     SharedModule,
     AppRoutes,
     AngularFireModule.initializeApp(environment.firebase)
+    StoreModule.forRoot({ }, {metaReducers})
   ],
   providers: [],
   bootstrap: [AppComponent]

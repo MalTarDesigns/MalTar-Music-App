@@ -4,19 +4,29 @@ interface NodeModule {
   id: string;
 }
 
-interface IUser {
-  email: String
-  password: String
-  confirmPassword?: String
-  name?: String
-  role?: String
+interface IAuthenticate {
+  email: string;
+  password: string;
+  name?: string;
+  username?: string;
 }
+
+interface IUser {
+  email: string
+  password: string
+  confirmPassword?: string
+  name?: string
+  id: number;
+  image: string | null;
+  role: string;
+}
+
 interface IBeat {
-  title: String
-  producer: String
-  artworkUrl?: String
-  genre: String
+  title: string
+  producer: string
+  artworkUrl?: string
+  genre: string
   price: Number
-  url: String
+  url: string
   likes?: Number
 }
