@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './services/auth-service/auth.service';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -23,6 +25,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    StoreModule.forFeature('auth', reducers),
   ],
   providers: [
     AuthService
