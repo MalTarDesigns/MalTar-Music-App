@@ -15,6 +15,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // not used in produ
 import { reducers, CustomSerializer } from './store';
 import { metaReducers } from './store/reducers';
 
+import { StoreModule } from '@ngrx/store';
+import { metaReducers } from './store/reducers/root.reducer';
+
+// not used in production
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
