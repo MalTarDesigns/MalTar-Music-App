@@ -13,12 +13,12 @@ interface IAuthenticate {
 
 interface IUser {
   email: string
-  password: string
-  confirmPassword?: string
+  // password?: string
+  // confirmPassword?: string
   name?: string
-  id: number;
-  image: string | null;
-  role: string;
+  id?: number;
+  image?: string | null;
+  role?: string;
 }
 
 interface IBeat {
