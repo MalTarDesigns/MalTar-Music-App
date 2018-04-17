@@ -28,8 +28,4 @@ export class LoginComponent implements OnInit {
     const user: IAuthenticate = this.loginFormGroup.value;
     this.store.dispatch(new AuthStore.Login({ email: user.email, password: user.password }));
   }
-
-  onLogoutClick(): void {
-    this.store.dispatch(new AuthStore.Logout());
-  }
 }

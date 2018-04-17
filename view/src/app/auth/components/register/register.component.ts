@@ -31,8 +31,4 @@ export class RegisterComponent implements OnInit {
     this.store.dispatch(new AuthStore.Register({ email: user.email, password: user.password }));
   }
 
-  onLogoutClick(): void {
-    this.store.dispatch(new AuthStore.Logout());
-  }
-
 }
