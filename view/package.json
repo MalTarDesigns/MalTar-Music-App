@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "@ngrx/effects": "^5.2.0",
     "@ngrx/router-store": "^5.2.0",
     "@ngrx/store": "^5.2.0",
     "angularfire2": "^5.0.0-rc.4",

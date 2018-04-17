@@ -7,10 +7,10 @@ export interface AuthState {
 
 export const initialState: AuthState = {
   loggedIn: false,
-  user: null,
+  user: null
 };
 
-export function reducer( state = initialState, action: fromAuth.Actions): AuthState {
+export function reducer(state = initialState, action: fromAuth.Actions): AuthState {
   switch (action.type) {
     case fromAuth.LOGIN_SUCCESS: {
       return {
@@ -18,6 +18,9 @@ export function reducer( state = initialState, action: fromAuth.Actions): AuthSt
         loggedIn: true,
         user: action.payload.user
       };
+    }
+    case fromAuth.LOGIN_FAILURE: {
+      return initialState;
     }
 
     case fromAuth.LOGOUT: {
