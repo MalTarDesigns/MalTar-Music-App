@@ -21,7 +21,6 @@ import { metaReducers } from './store/reducers';
     SharedModule,
     AppRoutes,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
     StoreModule.forRoot(reducers, { metaReducers }), // Right to left order of execution
     StoreRouterConnectingModule,
     EffectsModule.forRoot([]),
