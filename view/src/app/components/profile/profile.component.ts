@@ -17,13 +17,13 @@ export class ProfileComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-    this._authService.getProfile().subscribe(profile => {
-      this.user = profile.user;
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
+    // this._authService.getProfile().subscribe(profile => {
+    //   this.user = profile.user;
+    // },
+    // err => {
+    //   console.log(err);
+    //   return false;
+    // });
 
   }// ngOnInit end
 

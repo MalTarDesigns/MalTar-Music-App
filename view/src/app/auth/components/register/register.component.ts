@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { FlashMessagesService } from 'angular2-flash-messages'; // https://www.npmjs.com/package/angular2-flash-messages
-// import { AuthService } from '../../services/auth-service/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth-service/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,10 +10,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   registerFormGroup: FormGroup;
+  errorMessage = '';
+  successMessage = '';
 
   constructor(
-    // private flashMessage: FlashMessagesService,
-    // private authService: AuthService,
+    private authService: AuthService,
     private router: Router,
     private fb: FormBuilder
     ) { }
@@ -33,22 +33,16 @@ export class RegisterComponent implements OnInit {
 
     const user: IUser = this.registerFormGroup.value;
 
-    // this.authService.registerUser(user).subscribe(data => {
-    //   console.log(data);
-    //   // if (data.success) {
-    //   //   this.flashMessage.show('Your registration was successful', {
-    //   //     cssClass: 'alert-success',
-    //   //     timeout: 3000
-    //   //   });
-    //   //   this.router.navigate(['login']);
-    //   // } else {
-    //   //   this.flashMessage.show('Something went wrong', {
-    //   //     cssClass: 'alert-danger',
-    //   //     timeout: 3000
-    //   //   });
-    //   //   this.router.navigate(['register']);
-    //   // }
-    // });
+    this.authService.doRegister(user)
+     .then(res => {
+       console.log(res);
+       this.errorMessage = '';
+       this.successMessage = 'Your account has been created';
+     }, err => {
+       console.log(err);
+       this.errorMessage = err.message;
+       this.successMessage = '';
+     });
   }
 
   onLogoClick() {

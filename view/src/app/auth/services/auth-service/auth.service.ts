@@ -1,65 +1,87 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers} from '@angular/http';
-import 'rxjs/add/operator/map';
-// import { tokenNotExpired } from 'angular2-jwt'; // https://github.com/auth0/angular2-jwt
+import 'rxjs/add/operator/toPromise';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-  domain = 'http://localhost:5000/'; // Development Domain - Not Needed in Production
-  authToken: any;
-  user: any;
 
-  constructor(private _http: Http) { }
+  constructor(
+   public afAuth: AngularFireAuth
+ ) {}
 
-  // post sends the data
-  // get retrieves the data
-
-  registerUser(user) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-      return this._http.post(this.domain + 'users/register', user, {headers: headers})
-        .map(res => res.json()); // returns the json data from the new registered user (api)
-    }
-
-  authenticateUser(user) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-      return this._http.post(this.domain + 'users/authenticate', user, {headers: headers})
-        .map(res => res.json());
+  doFacebookLogin() {
+    return new Promise<any>((resolve, reject) => {
+      const provider = new firebase.auth.FacebookAuthProvider();
+      this.afAuth.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        resolve(res);
+      }, err => {
+        console.log(err);
+        reject(err);
+      });
+    });
   }
 
-  getProfile() {
-    const headers = new Headers();
-    this.loadToken(); // gets the user data from this function
-    headers.append('Authorization', this.authToken);
-    headers.append('Content-Type', 'application/json');
-      return this._http.get(this.domain + 'users/profile', {headers: headers})
-        .map(res => res.json());
+  doTwitterLogin() {
+    return new Promise<any>((resolve, reject) => {
+      const provider = new firebase.auth.TwitterAuthProvider();
+      this.afAuth.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        resolve(res);
+      }, err => {
+        console.log(err);
+        reject(err);
+      });
+    });
   }
 
-  storeUserData(token, user) {
-    localStorage.setItem('id_token', token); // Storing the token to localStorage
-    localStorage.setItem('user', JSON.stringify(user)); // Storing the user to localStorage
-    this.authToken = token;
-    this.user = user;
+  doGoogleLogin() {
+    return new Promise<any>((resolve, reject) => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
+      this.afAuth.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        resolve(res);
+      }, err => {
+        console.log(err);
+        reject(err);
+      });
+    });
   }
 
-  loadToken() { // fetched the getProfile data from localStorage b/c profile route is secured
-    const token = localStorage.getItem('id_token'); // retrives the user data from localStorage
-    this.authToken = token;
+  doRegister(value) {
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+      .then(res => {
+        resolve(res);
+      }, err => reject(err));
+    });
   }
 
-  loggedIn() {
-    // return tokenNotExpired('id_token');
-    // Note: tokenNotExpired will by default assume the token name is token
-    // unless a token name is passed to it, ex: tokenNotExpired('token_name').
-    // This will be changed in a future release to automatically use the token
-    // name that is set in AuthConfig.
+  doLogin(value) {
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().signInWithEmailAndPassword(value.email, value.password)
+      .then(res => {
+        resolve(res);
+      }, err => reject(err));
+    });
   }
 
-  logout() {
-    this.authToken = null;
-    this.user = null;
-    localStorage.clear();
+  doLogout() {
+    return new Promise((resolve, reject) => {
+      if (firebase.auth().currentUser) {
+        this.afAuth.auth.signOut();
+        resolve();
+      } else {
+        reject();
+      }
+    });
   }
+
+
 }
