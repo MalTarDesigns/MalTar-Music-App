@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth-service/auth.service';
+import { Store } from '@ngrx/store';
+
+import * as AuthStore from '../../store';
 
 @Component({
   selector: 'app-register',
@@ -13,11 +15,7 @@ export class RegisterComponent implements OnInit {
   errorMessage = '';
   successMessage = '';
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private fb: FormBuilder
-    ) { }
+  constructor(private fb: FormBuilder, private store: Store<AuthStore.State>) {}
 
   ngOnInit() {
     this.registerFormGroup = this.fb.group({
@@ -28,25 +26,9 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onRegisterSubmit() {
-    console.log(this.registerFormGroup.value);
-
-    const user: IUser = this.registerFormGroup.value;
-
-    this.authService.doRegister(user)
-     .then(res => {
-       console.log(res);
-       this.errorMessage = '';
-       this.successMessage = 'Your account has been created';
-     }, err => {
-       console.log(err);
-       this.errorMessage = err.message;
-       this.successMessage = '';
-     });
-  }
-
-  onLogoClick() {
-    this.router.navigate(['/']);
+  onRegisterSubmit(): void {
+    const user: IAuthenticate = this.registerFormGroup.value;
+    this.store.dispatch(new AuthStore.Register({ email: user.email, password: user.password }));
   }
 
 }

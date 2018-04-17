@@ -6,26 +6,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './services/auth-service/auth.service';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers, AuthEffects } from './store';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: RegisterComponent}
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: RegisterComponent }
 ];
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    RegisterComponent
-  ],
+  declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    StoreModule.forFeature('auth', reducers),
+    EffectsModule.forFeature([AuthEffects])
   ],
-  providers: [
-    AuthService
-  ]
+  providers: [AuthService],
+  exports: [AngularFireAuthModule]
 })
-export class AuthModule { }
+export class AuthModule {}

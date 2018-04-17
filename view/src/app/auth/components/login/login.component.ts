@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth-service/auth.service';
+import { Store } from '@ngrx/store';
+
+import * as AuthStore from '../../store';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +14,7 @@ export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
   errorMessage = '';
 
-
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private fb: FormBuilder
-  ) {}
+  constructor(private fb: FormBuilder, private store: Store<AuthStore.State>) {}
 
   ngOnInit() {
     this.loginFormGroup = this.fb.group({
@@ -26,20 +23,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onLoginSubmit() {
-    console.log(this.loginFormGroup.value);
-    this.authService.doLogin(this.loginFormGroup.value)
-    .then(res => {
-      console.log('it worked!!');
-      // this.router.navigate(['/user']);
-    }, err => {
-      console.log(err);
-      this.errorMessage = err.message;
-    });
+  onLoginSubmit(): void {
+    // console.log(this.loginFormGroup.value);
+    const user: IAuthenticate = this.loginFormGroup.value;
+    this.store.dispatch(new AuthStore.Login({ email: user.email, password: user.password }));
   }
-
-  onLogoClick() {
-    this.router.navigate(['/']);
-  }
-
 }

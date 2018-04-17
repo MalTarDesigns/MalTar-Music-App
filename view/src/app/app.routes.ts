@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: './home/home.module#HomeModule'
   },
   {
-    path: 'auth',
+    path: '',
     loadChildren: './auth/auth.module#AuthModule'
   }
 ];
@@ -17,5 +17,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutes {}
-
-// ./payroll/payroll.module#PayrollModule
