@@ -9,10 +9,12 @@ import { environment } from '../environments/environment';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // not used in production
 import { reducers, CustomSerializer } from './store';
 import { metaReducers } from './store/reducers';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
