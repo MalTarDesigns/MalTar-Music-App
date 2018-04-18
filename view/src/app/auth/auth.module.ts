@@ -9,6 +9,7 @@ import { AuthService } from './services/auth-service/auth.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers, AuthEffects } from './store';
+import { AuthGuard } from './services/auth-service/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -26,7 +27,7 @@ const routes: Routes = [
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([AuthEffects])
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   exports: [AngularFireAuthModule]
 })
 export class AuthModule {}
