@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 
-import * as fromStore from '../../store';
+import * as fromStore from '../../auth/store';
 
 @Injectable()
 export class AuthGuard implements CanActivate {

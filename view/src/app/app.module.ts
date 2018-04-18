@@ -13,7 +13,6 @@ import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // not used in production
 import { reducers, CustomSerializer } from './store';
 import { metaReducers } from './store/reducers';
-import { AuthGuard } from './auth/services/auth-service/auth.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +27,6 @@ import { AuthGuard } from './auth/services/auth-service/auth.guard';
     StoreDevtoolsModule.instrument({ name: 'maltar-music-app', maxAge: 25 })
   ],
   providers: [
-    AuthGuard,
     {
       provide: RouterStateSerializer,
       useClass: CustomSerializer
