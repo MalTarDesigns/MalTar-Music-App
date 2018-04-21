@@ -4,6 +4,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [];
 
@@ -14,12 +15,14 @@ const routes: Routes = [];
   ],
   exports: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-  ]
+  ],
+  providers: [AuthGuard]
 })
 export class SharedModule { }

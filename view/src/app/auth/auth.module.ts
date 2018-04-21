@@ -26,7 +26,6 @@ const routes: Routes = [
     StoreModule.forFeature('auth', reducers),
     EffectsModule.forFeature([AuthEffects])
   ],
-  providers: [AuthService],
-  exports: [AngularFireAuthModule]
+  providers: [AuthService]
 })
 export class AuthModule {}
