@@ -1,35 +1,11 @@
-form { margin: 0px 10px; }
-
 h2 {
   margin-top: 2px;
   margin-bottom: 2px;
 }
-
-.container { max-width: 360px; }
-
-.divider {
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 5px;
-}
-
-.divider hr {
-  margin: 7px 0px;
-  width: 35%;
-}
-
-.left { float: left; }
-
-.right { float: right; }
 
 .maltarmusic-logo {
   width: 60%;
   margin: 0 auto;
   display: block;
   margin-top: 15px;
-}
-
-.panel-primary {
-  margin-top: 15px;
-  border-color: #000;
 }

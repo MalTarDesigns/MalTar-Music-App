@@ -12,11 +12,16 @@ import * as fromStore from '../../../auth/store';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn: Observable<boolean>;
+  showDropdown = false;
 
   constructor(private store: Store<fromStore.State>, private _router: Router) {}
 
   ngOnInit() {
     this.isLoggedIn = this.store.select(fromStore.getLoggedIn);
+  }
+
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown
   }
 
   onLogoutClick() {
