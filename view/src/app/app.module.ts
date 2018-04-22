@@ -12,8 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // not used in production
-import { reducers, CustomSerializer } from './store';
-import { metaReducers } from './store/reducers';
+import { reducers, metaReducers, CustomSerializer  } from './store';
 
 @NgModule({
   declarations: [AppComponent],

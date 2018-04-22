@@ -7,8 +7,6 @@ interface NodeModule {
 interface IAuthenticate {
   email: string;
   password: string;
-  name?: string;
-  username?: string;
 }
 
 interface IUser {
@@ -29,4 +27,13 @@ interface IBeat {
   price: Number
   url: string
   likes?: Number
+}
+interface AuthState {
+  pending: boolean
+  loggedIn: boolean
+  user: IUser | null;
+  error: string
+}
+interface Errors {
+  effectError: string;
 }

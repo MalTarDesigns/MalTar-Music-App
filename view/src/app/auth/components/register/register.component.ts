@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import * as AuthStore from '../../store';
+import * as fromAuth from '../../store';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-register',
@@ -12,8 +14,7 @@ import * as AuthStore from '../../store';
 })
 export class RegisterComponent implements OnInit {
   registerFormGroup: FormGroup;
-  errorMessage = '';
-  successMessage = '';
+  errorMessage$: Observable<string>;
 
   constructor(private fb: FormBuilder, private store: Store<AuthStore.State>) {}
 
@@ -24,6 +25,9 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
       confirmPassword: ['', Validators.compose([Validators.minLength(6), Validators.required])]
     });
+
+    // this.errorMessage$ = this.store.select(fromAuth.getAuthError);
+
   }
 
   onRegisterSubmit(): void {

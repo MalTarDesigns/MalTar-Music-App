@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FooterComponent } from './components/footer/footer.component';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { GlobalErrorHandler } from './service/global.error';
 
 const routes: Routes = [];
 
@@ -38,6 +40,12 @@ const routes: Routes = [];
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [AuthGuard]
+  providers: [
+    AuthGuard,
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
+    }
+  ]
 })
-export class SharedModule { }
+export class SharedModule {}

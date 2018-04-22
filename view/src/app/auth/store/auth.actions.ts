@@ -6,7 +6,6 @@ export const LOGIN_SUCCESS = '[Auth] Login Success';
 export const LOGIN_FAILURE = '[Auth] Login Failure';
 export const LOGIN_REDIRECT = '[Auth] Login Redirect';
 export const REGISTER = '[Auth] Register';
-export const AUTHORIZED = '[Auth] Authorized';
 
 export class Login implements Action {
   readonly type = LOGIN;
@@ -37,15 +36,10 @@ export class LoginRedirect implements Action {
 
   constructor(public payload: any = {}) { }
 }
-
 export class Logout implements Action {
   readonly type = LOGOUT;
 
   constructor(public payload: any = {}) { }
-}
-
-export class Authorized implements Action {
-  readonly type = AUTHORIZED;
 }
 
 export type Actions =
@@ -53,4 +47,5 @@ export type Actions =
   | LoginSuccess
   | LoginFailure
   | LoginRedirect
+  | Register
   | Logout;

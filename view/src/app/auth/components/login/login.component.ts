@@ -4,7 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import * as AuthStore from '../../store';
-
+import { Observable } from 'rxjs/Observable';
+import * as fromAuth from '../../store';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,7 @@ import * as AuthStore from '../../store';
 })
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
-  errorMessage = '';
+  errorMessage$: Observable<string>;
 
   constructor(private fb: FormBuilder, private store: Store<AuthStore.State>) {}
 
@@ -21,10 +22,11 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
     });
+
+    // this.errorMessage$ = this.store.select(fromAuth.getAuthError);
   }
 
   onLoginSubmit(): void {
-    // console.log(this.loginFormGroup.value);
     const user: IAuthenticate = this.loginFormGroup.value;
     this.store.dispatch(new AuthStore.Login({ email: user.email, password: user.password }));
   }
