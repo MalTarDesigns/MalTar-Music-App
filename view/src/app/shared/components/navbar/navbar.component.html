@@ -1,14 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a [routerLink]="['/']" class="navbar-brand" href="#">MalTar Music App</a>
-  <button (click)="toggleDropdown()" class="navbar-toggler" type="button" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" [ngClass]="{'show': showDropdown}">
-    <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" [routerLink]="['/login']" *ngIf="!(isLoggedIn | async)">Login</a>
-      <a class="nav-item nav-link" [routerLink]="['/signup']" *ngIf="!(isLoggedIn | async)">Signup</a>
-      <a class="nav-item nav-link" (click)="onLogoutClick()" *ngIf="isLoggedIn | async">Logout</a>
-    </div>
-  </div>
-</nav>
+<mat-toolbar color="primary">
+  <span [routerLink]="['/']">MalTar Music App</span>
+  <span class="spacer"></span>
+  <button mat-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>menu</mat-icon> Menu</button>
+</mat-toolbar>
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item [routerLink]="['/login']" *ngIf="!(isLoggedIn | async)"> Login </button>
+  <button mat-menu-item [routerLink]="['/signup']" *ngIf="!(isLoggedIn | async)"> Signup </button>
+  <button mat-menu-item (click)="onLogoutClick()" *ngIf="isLoggedIn | async"> Logout </button>
+</mat-menu>

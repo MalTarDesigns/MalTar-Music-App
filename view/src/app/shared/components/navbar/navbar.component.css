@@ -1,11 +1,5 @@
-.navbar {
-  margin: 0;
-  background-color: #fff;
-  -webkit-box-shadow: 0 8px 6px -6px #999;
-  -moz-box-shadow: 0 8px 6px -6px #999;
-  box-shadow: 0 8px 6px -6px #999;
+.spacer {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }
-
-/* .navbar-nav {
-  float: right;
-} */

@@ -9,6 +9,7 @@ import { AuthService } from './services/auth-service/auth.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers, AuthEffects } from './store';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(routes),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     StoreModule.forFeature('auth', reducers),
