@@ -6,6 +6,7 @@ import { AppRoutes } from './app.routes';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -24,7 +25,8 @@ import { metaReducers } from './store/reducers';
     StoreModule.forRoot(reducers, { metaReducers }), // Right to left order of execution
     StoreRouterConnectingModule,
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ name: 'maltar-music-app', maxAge: 25 })
+    StoreDevtoolsModule.instrument({ name: 'maltar-music-app', maxAge: 25 }),
+    BrowserAnimationsModule
   ],
   providers: [
     {

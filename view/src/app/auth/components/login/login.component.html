@@ -37,29 +37,20 @@
   </div>
 </div> -->
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 offset-sm-3">
-      <div class="log">
-        <img class="maltarmusic-logo" src="assets/img/logo.png">
-      </div>
-      <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginSubmit()">
-        <div class="form-group">
-          <h2>Login</h2>
-        </div>
-        <div class="form-group">
-          <label>Email address</label>
-          <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" class="form-control" formControlName="password" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-info btn-block">Login</button>
-        <hr>
-        <a routerLink="/signup">Create an account</a>
-      </form>
-    </div>
+<div class="form-container">
+  <div class="log">
+    <img class="maltarmusic-logo" src="assets/img/logo.png">
   </div>
+  <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginSubmit()">
+    <h2>Login</h2>
+    <mat-form-field>
+      <input matInput placeholder="Email" dividerColor="accent" formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" dividerColor="accent" formControlName="password">
+    </mat-form-field>
+    <button mat-raised-button color="primary">Login</button>
+    <hr>
+    <a routerLink="/signup">Create an account</a>
+  </form>
 </div>
