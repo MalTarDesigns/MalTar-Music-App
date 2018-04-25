@@ -26,7 +26,9 @@ export class AuthEffects {
       return Observable.fromPromise(this.authService.doLogin(auth)).pipe(
         mergeMap((user: IUser) => {
           return [
-            new AuthActions.LoginSuccess({ user: { email: user.email } })          ];
+            new AuthActions.LoginSuccess({ user: { email: user.email } }),
+            new FromActions.EffectError({ error: {} })
+          ];
         }),
         catchError(error => of(new AuthActions.LoginFailure({ error })))
       );
@@ -41,7 +43,9 @@ export class AuthEffects {
       Observable.fromPromise(this.authService.doRegister(auth)).pipe(
         mergeMap((user: IUser) => {
           return [
-            new AuthActions.LoginSuccess({ user: { email: user.email } })          ];
+            new AuthActions.LoginSuccess({ user: { email: user.email } }),
+            new FromActions.EffectError({ error: {} })
+          ];
         }),
         catchError(error => of(new AuthActions.LoginFailure({ error })))
       )
