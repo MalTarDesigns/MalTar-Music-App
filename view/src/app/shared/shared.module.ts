@@ -1,16 +1,16 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthGuard } from './guards/auth.guard';
-import { MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule, MatIconModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+
+import * as fromMaterial from '@angular/material';
 import { GlobalErrorHandler } from './service/global.error';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [];
-
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -19,26 +19,26 @@ const routes: Routes = [];
   exports: [
     NavbarComponent,
     FooterComponent,
-    MatButtonModule,
-    MatCardModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule
+    fromMaterial.MatButtonModule,
+    fromMaterial.MatCardModule,
+    fromMaterial.MatMenuModule,
+    fromMaterial.MatToolbarModule,
+    fromMaterial.MatIconModule,
+    fromMaterial.MatFormFieldModule,
+    fromMaterial.MatInputModule
 
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    MatButtonModule,
-    MatCardModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule
+    fromMaterial.MatButtonModule,
+    fromMaterial.MatCardModule,
+    fromMaterial.MatMenuModule,
+    fromMaterial.MatToolbarModule,
+    fromMaterial.MatIconModule,
+    fromMaterial.MatFormFieldModule,
+    fromMaterial.MatInputModule
   ],
   providers: [
     AuthGuard,
@@ -48,4 +48,4 @@ const routes: Routes = [];
     }
   ]
 })
-export class SharedModule {}
+export class SharedModule { }
