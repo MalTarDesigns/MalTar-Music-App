@@ -23,7 +23,8 @@ export const Authreducer: ActionReducer<AuthState> = (state = initialState, acti
         ...state,
         pending: false,
         loggedIn: true,
-        user: action.payload.user
+        user: action.payload.user,
+        error: null
       }
     }
 
@@ -37,7 +38,12 @@ export const Authreducer: ActionReducer<AuthState> = (state = initialState, acti
     }
 
     case fromActions.LOGOUT: {
-      return state;
+      return {
+        ...state,
+        loggedIn: false,
+        user: null,
+        error: null
+      }
     }
 
     default: {
