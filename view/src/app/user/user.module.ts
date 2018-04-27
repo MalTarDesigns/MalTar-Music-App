@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RouterModule, Routes } from '@angular/router';
+import { UserService } from './services/user-service/user.service';
 
 const routes: Routes = [
   { path: 'news-feed', component: NewsFeedComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [NewsFeedComponent, ProfileComponent]
+  declarations: [NewsFeedComponent, ProfileComponent],
+  providers: [UserService],
 })
 export class UserModule { }
