@@ -9,17 +9,25 @@ interface IAuthenticate {
   password: string;
 }
 
-interface IUser {
-  email: string
-  // password?: string
-  // confirmPassword?: string
-  name?: string
-  id?: number;
-  image?: string | null;
-  role?: string;
+interface AuthState {
+  pending: boolean
+  loggedIn: boolean
+  user: IUser | null;
+  error: string
 }
 
-interface IBeat {
+interface IUser {
+  email: string
+  name?: string
+  id?: any;
+  avatar?: string | null;
+  role?: string;
+}
+interface Errors {
+  effectError: string;
+}
+
+interface IMusic {
   title: string
   producer: string
   artworkUrl?: string
@@ -27,13 +35,4 @@ interface IBeat {
   price: Number
   url: string
   likes?: Number
-}
-interface AuthState {
-  pending: boolean
-  loggedIn: boolean
-  user: IUser | null;
-  error: string
-}
-interface Errors {
-  effectError: string;
 }
