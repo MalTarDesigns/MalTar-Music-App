@@ -9,6 +9,7 @@ import { AuthGuard } from './guards/auth.guard';
 import * as fromMaterial from '@angular/material';
 import { GlobalErrorHandler } from './service/global.error';
 import { RouterModule, Routes } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes: Routes = [];
 @NgModule({
@@ -25,8 +26,9 @@ const routes: Routes = [];
     fromMaterial.MatToolbarModule,
     fromMaterial.MatIconModule,
     fromMaterial.MatFormFieldModule,
-    fromMaterial.MatInputModule
-
+    fromMaterial.MatInputModule,
+    fromMaterial.MatTabsModule,
+    FlexLayoutModule
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,9 @@ const routes: Routes = [];
     fromMaterial.MatToolbarModule,
     fromMaterial.MatIconModule,
     fromMaterial.MatFormFieldModule,
-    fromMaterial.MatInputModule
+    fromMaterial.MatInputModule,
+    fromMaterial.MatTabsModule,
+    FlexLayoutModule
   ],
   providers: [
     AuthGuard,
