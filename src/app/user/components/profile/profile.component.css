@@ -1,31 +1,24 @@
 .profile {
-  background-color:#ddd;
-  height: auto;
+    height: auto;
+    padding: 5px;
 }
 
-.sec1 {
-  background: red;
-  color:white;
-  text-transform: uppercase
+.profile__pic {
+    text-align: center;
 }
 
-.sec2 {
-  background: yellow;
-  color:blue;
-
+.profile__pic img {
+    border-radius: 50%
 }
 
-.sec3 {
-  background: blue;
-  color:white;
-  text-transform: uppercase
+.avatar {
+    border-radius: 50%;
 }
 
-.sec1, .sec2, .sec3 {
-  padding-top:20px;
-  text-align:center
+.number-of-followers {
+    display: inline-block;
 }
 
-/* .profile__details {
-  min-width: 200px;
-} */
+.number-of-plays {
+    display: inline-block;
+}
