@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ProfileTabsComponent } from './components/profile-tabs/profile-tabs.component';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './store';
+import { MaterialModule } from '../material.module';
 
 @Component({
   selector: 'app-user',
@@ -31,8 +32,9 @@ const userRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(userRoutes),
+    MaterialModule,
     SharedModule,
+    RouterModule.forChild(userRoutes),
     StoreModule.forFeature('user', userReducer),
   ],
   declarations: [

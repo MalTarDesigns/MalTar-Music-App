@@ -10,6 +10,7 @@ import * as fromMaterial from '@angular/material';
 import { GlobalErrorHandler } from './service/global.error';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from '../material.module';
 
 const routes: Routes = [];
 @NgModule({
@@ -20,29 +21,12 @@ const routes: Routes = [];
   exports: [
     NavbarComponent,
     FooterComponent,
-    fromMaterial.MatButtonModule,
-    fromMaterial.MatCardModule,
-    fromMaterial.MatMenuModule,
-    fromMaterial.MatToolbarModule,
-    fromMaterial.MatIconModule,
-    fromMaterial.MatFormFieldModule,
-    fromMaterial.MatInputModule,
-    fromMaterial.MatTabsModule,
-    FlexLayoutModule
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    fromMaterial.MatButtonModule,
-    fromMaterial.MatCardModule,
-    fromMaterial.MatMenuModule,
-    fromMaterial.MatToolbarModule,
-    fromMaterial.MatIconModule,
-    fromMaterial.MatFormFieldModule,
-    fromMaterial.MatInputModule,
-    fromMaterial.MatTabsModule,
-    FlexLayoutModule
+    MaterialModule
   ],
   providers: [
     AuthGuard,

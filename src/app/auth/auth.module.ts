@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../material.module';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,7 +10,6 @@ import { AuthService } from './services/auth-service/auth.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { authReducer, AuthEffects } from './store';
-import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,7 +22,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
+    MaterialModule,
     RouterModule.forChild(routes),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     StoreModule.forFeature('auth', authReducer),

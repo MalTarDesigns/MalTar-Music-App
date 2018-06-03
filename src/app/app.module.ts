@@ -1,25 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { AppRoutes } from './app.routes';
+import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from '../environments/environment';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AuthModule } from './auth/auth.module';
+import { MaterialModule } from './material.module';
+import { AppComponent } from './app.component';
+import { AppRoutes } from './app.routes';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // not used in production
 import { reducers, metaReducers, CustomSerializer  } from './store';
-import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    SharedModule,
+    BrowserAnimationsModule,
     AuthModule,
     AppRoutes,
     AngularFireModule.initializeApp(environment.firebase),
@@ -27,7 +27,6 @@ import { AuthModule } from './auth/auth.module';
     StoreRouterConnectingModule,
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ name: 'maltar-music-app', maxAge: 25 }),
-    BrowserAnimationsModule
   ],
   providers: [
     {
