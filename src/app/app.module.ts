@@ -13,12 +13,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // not used in production
 import { reducers, metaReducers, CustomSerializer  } from './store';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     SharedModule,
+    AuthModule,
     AppRoutes,
     AngularFireModule.initializeApp(environment.firebase),
     StoreModule.forRoot(reducers, { metaReducers }), // Right to left order of execution

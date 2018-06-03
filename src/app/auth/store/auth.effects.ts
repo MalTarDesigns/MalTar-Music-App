@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { tap, map, exhaustMap, catchError, observeOn, switchMap, mergeMap } from 'rxjs/operators';
 import { AngularFireAuth } from 'angularfire2/auth';
-
+import * as fromErrors from '../../store/errors';
 import * as AuthActions from './auth.actions';
 import * as FromActions from '../../store/actions';
 import { AuthService } from '../services/auth-service/auth.service';
@@ -56,7 +56,7 @@ export class AuthEffects {
   loginFailure$ = this.actions$.pipe(
     ofType(AuthActions.LOGIN_FAILURE),
     map((action: FromActions.EffectError) => action.payload),
-    map((errors: Errors) => new FromActions.EffectError(errors))
+    map((errors: fromErrors.Errors) => new FromActions.EffectError(errors))
   );
 
   @Effect({ dispatch: false })

@@ -1,6 +1,10 @@
 import { ActionReducer } from '@ngrx/store';
 import * as fromActions from '../actions';
 
+export interface Errors {
+  effectError: string;
+}
+
 const initialState: Errors = {
   effectError: null
 };
@@ -12,7 +16,7 @@ const initialState: Errors = {
  * @param action - the action being dispatched
  * @returns Errors - service level Errors
  */
-export const ErrorsReducer: ActionReducer<Errors> = (
+export const errorsReducer: ActionReducer<Errors> = (
   state: Errors = initialState,
   action: fromActions.Actions
 ) => {

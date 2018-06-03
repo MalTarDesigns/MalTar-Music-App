@@ -10,12 +10,10 @@ import { environment } from '../../environments/environment';
  */
 import { storeFreeze } from 'ngrx-store-freeze'; // not used in production
 
-import * as fromAuth from '../auth/store';
-
+import * as fromErrors from './errors';
 import * as fromRouter from '@ngrx/router-store';
 import { Params, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { RouterStateSerializer } from '@ngrx/router-store';
-import { ErrorsReducer } from './errors/errors.reducer';
 
 export interface RouterStateUrl {
   url: string;
@@ -33,7 +31,7 @@ export interface RouterStateUrl {
  */
 export interface AppState {
   routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
-  errors: Errors;
+  errors: fromErrors.Errors;
 }
 
 /**
@@ -43,7 +41,7 @@ export interface AppState {
  */
 export const reducers: ActionReducerMap<AppState> = {
   routerReducer: fromRouter.routerReducer,
-  errors: ErrorsReducer
+  errors: fromErrors.errorsReducer
 };
 
 export const getRouterState = createFeatureSelector<fromRouter.RouterReducerState<RouterStateUrl>>(

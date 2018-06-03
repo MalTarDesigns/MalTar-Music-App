@@ -4,16 +4,10 @@ interface NodeModule {
   id: string;
 }
 
+// models
 interface IAuthenticate {
   email: string;
   password: string;
-}
-
-interface AuthState {
-  pending: boolean
-  loggedIn: boolean
-  user: IUser | null;
-  error: string
 }
 
 interface IUser {
@@ -22,9 +16,6 @@ interface IUser {
   id?: any;
   avatar?: string | null;
   role?: string;
-}
-interface Errors {
-  effectError: string;
 }
 
 interface IMusic {

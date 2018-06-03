@@ -8,7 +8,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './services/auth-service/auth.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers, AuthEffects } from './store';
+import { authReducer, AuthEffects } from './store';
 import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
@@ -25,7 +25,7 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    StoreModule.forFeature('auth', reducers),
+    StoreModule.forFeature('auth', authReducer),
     EffectsModule.forFeature([AuthEffects])
   ],
   providers: [AuthService],

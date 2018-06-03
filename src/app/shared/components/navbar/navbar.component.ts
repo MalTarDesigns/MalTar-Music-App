@@ -3,7 +3,8 @@ import { AuthService } from '../../../auth/services/auth-service/auth.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import * as fromStore from '../../../auth/store';
+import * as fromStore from '../../../store';
+import * as fromAuth from '../../../auth/store';
 
 @Component({
   selector: 'app-navbar',
@@ -14,10 +15,10 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: Observable<boolean>;
   showDropdown = false;
 
-  constructor(private store: Store<fromStore.State>, private _router: Router) { }
+  constructor(private store: Store<fromStore.AppState>, private _router: Router) { }
 
   ngOnInit() {
-    this.isLoggedIn = this.store.select(fromStore.getLoggedIn);
+    this.isLoggedIn = this.store.select(fromAuth.getLoggedIn);
   }
 
   toggleDropdown() {
@@ -25,6 +26,6 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogoutClick() {
-    this.store.dispatch(new fromStore.Logout());
+    this.store.dispatch(new fromAuth.Logout());
   }
 }
