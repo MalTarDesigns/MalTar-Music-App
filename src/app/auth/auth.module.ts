@@ -9,7 +9,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './services/auth-service/auth.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { authReducer, AuthEffects } from './store';
+import { reducer, AuthEffects } from './store';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -25,7 +25,7 @@ const routes: Routes = [
     MaterialModule,
     RouterModule.forChild(routes),
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    StoreModule.forFeature('auth', authReducer),
+    StoreModule.forFeature('auth', reducer),
     EffectsModule.forFeature([AuthEffects])
   ],
   providers: [AuthService],

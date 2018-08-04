@@ -1,10 +1,5 @@
-import { ActionReducer } from '@ngrx/store';
-import * as fromActions from './auth.actions';
-import { AppState } from '../../store/index';
+import { AuthActions, AuthActionTypes } from './auth.actions';
 
-export interface State extends AppState {
-  auth: AuthState;
-}
 export interface AuthState {
   pending: boolean
   loggedIn: boolean
@@ -19,17 +14,17 @@ export const initialState: AuthState = {
   error: null
 };
 
-export const authReducer: ActionReducer<AuthState> = (state = initialState, action: fromActions.Actions) => {
+export function reducer(state = initialState, action: AuthActions) {
   switch (action.type) {
 
-    case fromActions.LOGIN: {
+    case AuthActionTypes.Login: {
       return {
         ...state,
         pending: true,
       }
     }
 
-    case fromActions.LOGIN_SUCCESS: {
+    case AuthActionTypes.LoginSuccess: {
       return {
         ...state,
         pending: false,
@@ -39,7 +34,7 @@ export const authReducer: ActionReducer<AuthState> = (state = initialState, acti
       }
     }
 
-    case fromActions.LOGIN_FAILURE: {
+    case AuthActionTypes.LoginFailure: {
       return {
         ...state,
         pending: false,
@@ -48,13 +43,8 @@ export const authReducer: ActionReducer<AuthState> = (state = initialState, acti
       }
     }
 
-    case fromActions.LOGOUT: {
-      return {
-        ...state,
-        loggedIn: false,
-        user: null,
-        error: null
-      }
+    case AuthActionTypes.Logout: {
+      return state;
     }
 
     default: {

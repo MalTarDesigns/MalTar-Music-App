@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { tap, map, exhaustMap, catchError, observeOn, switchMap, mergeMap } from 'rxjs/operators';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as fromErrors from '../../store/errors';
-import * as AuthActions from './auth.actions';
-import * as FromActions from '../../store/actions';
+import { tap, map, exhaustMap, catchError, mergeMap } from 'rxjs/operators';
+// import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../services/auth-service/auth.service';
+import { AuthActionTypes, Login, LoginSuccess, Register, LoginFailure } from './auth.actions';
+import { EffectError } from '../../store/actions';
+import { Errors } from '../../store/errors';
 
 @Injectable()
 export class AuthEffects {
@@ -16,58 +16,60 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   @Effect()
   login$ = this.actions$.pipe(
-    ofType(AuthActions.LOGIN),
-    map((action: AuthActions.Login) => action.payload),
-    exhaustMap((auth: IAuthenticate) => {
-      return Observable.fromPromise(this.authService.doLogin(auth)).pipe(
-        mergeMap((user: IUser) => {
-          return [
-            new AuthActions.LoginSuccess({ user: { email: user.email } }),
-            new FromActions.EffectError({ error: {} })
-          ];
-        }),
-        catchError(error => of(new AuthActions.LoginFailure({ error })))
-      );
-    })
+    ofType<Login>(AuthActionTypes.Login),
+    map(action => action.payload),
+    exhaustMap((authInfo: IAuthenticate) =>
+    Observable.fromPromise(this.authService
+        .doLogin(authInfo))
+        .pipe(
+          map(user => new LoginSuccess({
+            user: {
+              email: user.email,
+              uid: user.uid
+            }
+          })),
+          catchError(error => of(new EffectError(error)))
+        )
+    )
   );
 
   @Effect()
   register$ = this.actions$.pipe(
-    ofType(AuthActions.REGISTER),
-    map((action: AuthActions.Register) => action.payload),
+    ofType<Register>(AuthActionTypes.Register),
+    map(action => action.payload),
     exhaustMap((auth: IAuthenticate) =>
       Observable.fromPromise(this.authService.doRegister(auth)).pipe(
         mergeMap((user: IUser) => {
           return [
-            new AuthActions.LoginSuccess({ user: { email: user.email } }),
-            new FromActions.EffectError({ error: {} })
+            new LoginSuccess({ user: { email: user.email } }),
+            new EffectError({ error: {} })
           ];
         }),
-        catchError(error => of(new AuthActions.LoginFailure({ error })))
+        catchError(error => of(new LoginFailure(error)))
       )
     )
   );
 
   @Effect()
   loginFailure$ = this.actions$.pipe(
-    ofType(AuthActions.LOGIN_FAILURE),
-    map((action: FromActions.EffectError) => action.payload),
-    map((errors: fromErrors.Errors) => new FromActions.EffectError(errors))
+    ofType<LoginFailure>(AuthActionTypes.LoginFailure),
+    map(action => action.payload),
+    map((errors: Errors) => new EffectError(errors))
   );
 
   @Effect({ dispatch: false })
   loginSuccess$ = this.actions$.pipe(
-    ofType(AuthActions.LOGIN_SUCCESS),
+    ofType(AuthActionTypes.LoginSuccess),
     tap(() => this.router.navigate(['/']))
   );
 
   @Effect({ dispatch: false })
   loginRedirect$ = this.actions$.pipe(
-    ofType(AuthActions.LOGIN_REDIRECT, AuthActions.LOGOUT),
+    ofType(AuthActionTypes.LoginRedirect, AuthActionTypes.Logout),
     tap(() => this.router.navigate(['/login']))
   );
 }

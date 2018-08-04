@@ -1,6 +1,6 @@
 import { ActionReducer } from '@ngrx/store';
 import * as fromActions from './user.actions';
-import { AppState } from '../../store/index';
+import { AppState } from '../../store';
 
 export interface State extends AppState {
   user: UserState;

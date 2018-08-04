@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-
-import * as AuthStore from '../../store';
 import { Observable } from 'rxjs/Observable';
-import * as fromAuth from '../../store';
+import { AppState } from '../../../store';
+import { Login } from '../../store';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
   errorMessage$: Observable<string>;
 
-  constructor(private fb: FormBuilder, private store: Store<AuthStore.State>) {}
+  constructor(private fb: FormBuilder, private store: Store<AppState>) {}
 
   ngOnInit() {
     this.loginFormGroup = this.fb.group({
@@ -28,6 +27,6 @@ export class LoginComponent implements OnInit {
 
   onLoginSubmit(): void {
     const user: IAuthenticate = this.loginFormGroup.value;
-    this.store.dispatch(new AuthStore.Login({ email: user.email, password: user.password }));
+    this.store.dispatch(new Login({ email: user.email, password: user.password }));
   }
 }

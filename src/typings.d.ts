@@ -11,8 +11,9 @@ interface IAuthenticate {
 }
 
 interface IUser {
-  email: string
-  name?: string
+  email: string;
+  uid?: string;
+  displayName?: string;
   id?: any;
   avatar?: string | null;
   role?: string;
