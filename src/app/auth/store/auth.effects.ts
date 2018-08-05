@@ -4,7 +4,6 @@ import { Actions, ofType, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { tap, map, exhaustMap, catchError, mergeMap } from 'rxjs/operators';
-// import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../services/auth-service/auth.service';
 import { AuthActionTypes, Login, LoginSuccess, Register, LoginFailure } from './auth.actions';
 import { EffectError } from '../../store/actions';

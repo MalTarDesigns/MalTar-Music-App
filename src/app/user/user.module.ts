@@ -9,6 +9,7 @@ import { ProfileTabsComponent } from './components/profile-tabs/profile-tabs.com
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './store';
 import { MaterialModule } from '../material.module';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Component({
   selector: 'app-user',
@@ -43,6 +44,6 @@ const userRoutes: Routes = [
     ProfileComponent,
     ProfileTabsComponent
   ],
-  providers: [UserService],
+  providers: [UserService, AuthGuard],
 })
 export class UserModule { }
