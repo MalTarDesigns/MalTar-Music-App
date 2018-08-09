@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect } from '@ngrx/effects';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { tap, map, exhaustMap, catchError, mergeMap } from 'rxjs/operators';
 import { AuthService } from '../services/auth-service/auth.service';
 import { AuthActionTypes, Login, LoginSuccess, Register, LoginFailure } from './auth.actions';
 import { EffectError } from '../../store/actions';
 import { Errors } from '../../store/errors';
+import { of, Observable, from } from 'rxjs';
+
 
 @Injectable()
 export class AuthEffects {
@@ -22,7 +22,7 @@ export class AuthEffects {
     ofType<Login>(AuthActionTypes.Login),
     map(action => action.payload),
     exhaustMap((authInfo: IAuthenticate) =>
-    Observable.fromPromise(this.authService
+    from(this.authService
         .doLogin(authInfo))
         .pipe(
           map(user => new LoginSuccess({
@@ -41,7 +41,7 @@ export class AuthEffects {
     ofType<Register>(AuthActionTypes.Register),
     map(action => action.payload),
     exhaustMap((auth: IAuthenticate) =>
-      Observable.fromPromise(this.authService.doRegister(auth)).pipe(
+      from(this.authService.doRegister(auth)).pipe(
         mergeMap((user: IUser) => {
           return [
             new LoginSuccess({ user: { email: user.email } }),

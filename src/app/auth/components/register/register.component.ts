@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import * as fromAuth from '../../store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { UserService } from '../../../user/services/user-service/user.service';
 import { AddUser } from '../../../user/store/user.actions';
 

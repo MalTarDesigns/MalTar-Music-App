@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
+import { map } from 'rxjs/operators';
 
 @Injectable() // Always use this for services
 export class BeatService {
@@ -86,19 +87,25 @@ export class BeatService {
 
   getBeats() {
     return this._http.get('http://localhost:5000/api/v1/beats')
-      .map(res => res.json());
+    .pipe(
+      map(res => res.json())
+    )
   }
 
   saveBeat(newbeat){
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
       return this._http.post('http://localhost:5000/api/v1/beat', newbeat, {headers: headers})
-        .map(res => res.json());
+      .pipe(
+        map(res => res.json())
+      )
   }
 
   deleteBeat(id) {
     return this._http.delete('http://localhost:5000/api/v1/beat/' + id)
-      .map(res => res.json());
+    .pipe(
+      map(res => res.json())
+    )
   }
 
 } /* end class */

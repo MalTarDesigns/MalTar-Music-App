@@ -1,6 +1,6 @@
 import { ErrorHandler, Injectable, Inject, Injector } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 import * as fromActions from '../../store/actions';
 import { AppState } from '../../store';
 import { Store } from '@ngrx/store';

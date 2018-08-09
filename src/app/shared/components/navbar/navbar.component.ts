@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth-service/auth.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import * as fromStore from '../../../store';
 import * as fromAuth from '../../../auth/store';
 

@@ -4,7 +4,8 @@ import {
   AngularFirestore,
   AngularFirestoreDocument
 } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -15,13 +16,15 @@ export class UserService {
   constructor(public afs: AngularFirestore) {
     this.usersCollection = this.afs.collection('users');
     // this.users = this.afs.collection('users').valueChanges();
-    this.users = this.usersCollection.snapshotChanges().map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as IUser;
-        data.id = a.payload.doc.id;
-        return data;
-      });
-    });
+    this.users = this.usersCollection.snapshotChanges().pipe(
+      map(changes => {
+        return changes.map(a => {
+          const data = a.payload.doc.data() as IUser;
+          data.id = a.payload.doc.id;
+          return data;
+        })
+      })
+    )
   }
 
   getusers() {
