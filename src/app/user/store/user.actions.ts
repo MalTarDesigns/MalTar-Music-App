@@ -1,84 +1,59 @@
 import { Action } from '@ngrx/store';
 
-export const ADD_USER =             '[Users] Add User';
-export const ADD_USER_SUCCESS =     '[Users] Add User Success';
-export const ADD_USER_FAIL =        '[Users] Add User Fail';
-export const REMOVE_USER =          '[Users] Remove User';
-export const REMOVE_USER_SUCCESS =  '[Users] Remove User Success';
-export const REMOVE_USER_FAIL =     '[Users] Remove User Fail';
-export const LOAD =                 '[Users] Load';
-export const LOAD_SUCCESS =         '[Users] Load Success';
-export const LOAD_FAIL =            '[Users] Load Fail';
+export enum UserActionTypes {
+  AddUser = '[Users] Add User',
+  AddUserSuccess = '[Users] Add User Success',
+  AddUserFail = '[Users] Add User Fail',
+  LoadUser = '[Users] Load',
+  LoadUserSuccess = '[Users] Load Success',
+  LoadUserFail = '[Users] Load Fail'
+}
 
 /**
  * Add User to Users Actions
  */
+
 export class AddUser implements Action {
-  readonly type = ADD_USER;
+  readonly type = UserActionTypes.AddUser;
 
   constructor(public payload: IUser) { }
 }
 
 export class AddUserSuccess implements Action {
-  readonly type = ADD_USER_SUCCESS;
+  readonly type = UserActionTypes.AddUserSuccess;
 
   constructor(public payload: IUser) { }
 }
 
 export class AddUserFail implements Action {
-  readonly type = ADD_USER_FAIL;
+  readonly type = UserActionTypes.AddUserFail;
 
-  constructor(public payload: IUser) { }
-}
-
-/**
- * Remove User from Users Actions
- */
-export class RemoveUser implements Action {
-  readonly type = REMOVE_USER;
-
-  constructor(public payload: IUser) { }
-}
-
-export class RemoveUserSuccess implements Action {
-  readonly type = REMOVE_USER_SUCCESS;
-
-  constructor(public payload: IUser) { }
-}
-
-export class RemoveUserFail implements Action {
-  readonly type = REMOVE_USER_FAIL;
-
-  constructor(public payload: IUser) {}
+  constructor(public payload: any) { }
 }
 
 /**
  * Load Users Actions
  */
-export class Load implements Action {
-  readonly type = LOAD;
+export class LoadUser implements Action {
+  readonly type = UserActionTypes.LoadUser;
 }
 
-export class LoadSuccess implements Action {
-  readonly type = LOAD_SUCCESS;
+export class LoadUserSuccess implements Action {
+  readonly type = UserActionTypes.LoadUserSuccess;
 
-  constructor(public payload: IUser[]) { }
+  constructor(public payload: IUser) { }
 }
 
-export class LoadFail implements Action {
-  readonly type = LOAD_FAIL;
+export class LoadUserFail implements Action {
+  readonly type = UserActionTypes.LoadUserFail;
 
   constructor(public payload: any) { }
 }
 
-
-export type Actions
-  = AddUser
+export type UserActions =
+    AddUser
   | AddUserSuccess
   | AddUserFail
-  | RemoveUser
-  | RemoveUserSuccess
-  | RemoveUserFail
-  | Load
-  | LoadSuccess
-  | LoadFail;
+  | LoadUser
+  | LoadUserSuccess
+  | LoadUserFail;

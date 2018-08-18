@@ -23,8 +23,6 @@ export class Register implements Action {
 
 export class LoginSuccess implements Action {
   readonly type = AuthActionTypes.LoginSuccess;
-
-  constructor(public payload: { user: IUser }) { }
 }
 
 export class LoginFailure implements Action {

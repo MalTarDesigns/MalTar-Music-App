@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AuthModule } from './auth/auth.module';
@@ -11,7 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'; // not used in production
-import { reducers, metaReducers, CustomSerializer  } from './store';
+import { reducers, metaReducers, CustomSerializer } from './store';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AuthGuard } from './auth/auth.guard';
 
@@ -22,10 +22,10 @@ import { AuthGuard } from './auth/auth.guard';
     BrowserAnimationsModule,
     AuthModule,
     AppRoutes,
-    AngularFireModule.initializeApp(environment.firebase),
-    StoreModule.forRoot(reducers, { metaReducers }), // Right to left order of execution
     StoreRouterConnectingModule,
     EffectsModule.forRoot([]),
+    AngularFireModule.initializeApp(environment.firebase),
+    StoreModule.forRoot(reducers, { metaReducers }), // Right to left order of execution
     StoreDevtoolsModule.instrument({ name: 'maltar-music-app', maxAge: 25 }),
   ],
   providers: [
@@ -38,4 +38,4 @@ import { AuthGuard } from './auth/auth.guard';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

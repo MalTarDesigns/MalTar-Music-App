@@ -1,47 +1,51 @@
-import { ActionReducer } from '@ngrx/store';
-import * as fromActions from './user.actions';
-import { AppState } from '../../store';
+import { UserActions, UserActionTypes  } from './user.actions';
 
-export interface State extends AppState {
-  user: UserState;
-}
 export interface UserState {
   loaded: boolean;
   loading: boolean;
-  ids: string[];
+  error: string;
+  email: string;
+  uid: string;
+  role?: string;
+  avatar?: string;
 }
 
 export const initialState: UserState = {
   loaded: false,
   loading: false,
-  ids: []
+  error: null,
+  email: null,
+  uid: null,
+  role: 'user',
+  avatar: 'http://via.placeholder.com/140x100'
 }
 
-export const userReducer: ActionReducer<UserState> = (state = initialState, action: fromActions.Actions) => {
+export function reducer(state = initialState, action: UserActions) {
   switch (action.type) {
 
-    case fromActions.LOAD: {
+    case UserActionTypes.LoadUser: {
       return {
         ...state,
-        pending: true,
+        loading: true,
       }
     }
 
-    case fromActions.ADD_USER: {
+    case UserActionTypes.AddUserSuccess: {
       return {
         ...state,
+        loaded: true,
+        loading: false,
+        email: action.payload.email,
+        uid: action.payload.uid,
+        role: action.payload.role,
+        avatar: action.payload.avatar
       }
     }
 
-    case fromActions.ADD_USER_FAIL: {
+    case UserActionTypes.AddUserFail: {
       return {
         ...state,
-      }
-    }
-
-    case fromActions.ADD_USER_SUCCESS: {
-      return {
-        ...state,
+        error: action.payload
       }
     }
 

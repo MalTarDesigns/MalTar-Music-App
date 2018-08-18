@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -10,12 +9,11 @@ const appRoutes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: './home/home.module#HomeModule'
+    loadChildren: './home/home.module#HomeModule',
   },
   {
-    path: '',
+    path: 'user',
     loadChildren: './user/user.module#UserModule',
-    canActivate: [AuthGuard]
   }
 ];
 @NgModule({

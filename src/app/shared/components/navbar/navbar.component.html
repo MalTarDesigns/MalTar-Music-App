@@ -5,9 +5,9 @@
     <mat-icon>menu</mat-icon> Menu</button>
 </mat-toolbar>
 <mat-menu #appMenu="matMenu">
-  <button mat-menu-item [routerLink]="['/login']" *ngIf="!(isLoggedIn | async)"> Login </button>
-  <button mat-menu-item [routerLink]="['/signup']" *ngIf="!(isLoggedIn | async)"> Signup </button>
-  <button mat-menu-item [routerLink]="['/news-feed']" *ngIf="isLoggedIn | async"> News Feed </button>
-  <button mat-menu-item [routerLink]="['/profile']" *ngIf="isLoggedIn | async"> Profile </button>
+  <button mat-menu-item [routerLink]="['/user/login']" *ngIf="!(isLoggedIn | async)"> Login </button>
+  <button mat-menu-item [routerLink]="['/user/signup']" *ngIf="!(isLoggedIn | async)"> Signup </button>
+  <button mat-menu-item [routerLink]="['/user/news-feed']" *ngIf="isLoggedIn | async"> News Feed </button>
+  <button mat-menu-item [routerLink]="['/user/profile']" *ngIf="isLoggedIn | async"> Profile </button>
   <button mat-menu-item (click)="onLogoutClick()" *ngIf="isLoggedIn | async"> Logout </button>
 </mat-menu>

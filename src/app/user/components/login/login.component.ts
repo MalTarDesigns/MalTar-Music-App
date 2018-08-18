@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from '../../../store';
-import { Login } from '../../store';
+import { Login } from '../../../auth/store';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
