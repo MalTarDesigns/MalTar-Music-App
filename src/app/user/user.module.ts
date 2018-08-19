@@ -37,9 +37,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    UserComponent,
     LoginComponent,
     RegisterComponent,
-    UserComponent,
     NewsFeedComponent,
     ProfileComponent,
     ProfileTabsComponent
