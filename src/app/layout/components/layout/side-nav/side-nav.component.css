@@ -1,0 +1,29 @@
+.nav-item-icon {
+    margin-right: 50px;
+    margin-left: 14px;
+}
+
+.active .nav-item-icon {
+    color: #dc0000;
+}
+
+.active .item-title  {
+    color: #dc0000;
+}
+
+.purchase-text {
+    color: #00917e;
+    margin-bottom: 20px;
+}
+
+.music-purchase-cover {
+    width: 240px;
+}
+
+.purchase-video-icon {
+    position: absolute;
+    top: 90px;
+    left: 100px;
+    color: #ffffff;
+    font-size: 45px;
+}

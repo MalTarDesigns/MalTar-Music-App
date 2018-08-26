@@ -1,0 +1,35 @@
+.main-body {
+    margin-top: 4px;
+}
+
+mat-sidenav {
+    width: 20%;
+}
+
+mat-sidenav-content {
+    background-color: #ffffff;
+}
+
+.user-name {
+    margin-left: 20px;
+}
+
+.sidenav-container {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 6px 0 rgba(0, 0, 0, 0.19);
+    margin-right: 2px;
+    height: 100%;
+}
+
+.sidenav-close {
+    margin-left: 50px;
+}
+
+.user-metadata {
+    padding: 25px 0 25px 0;
+}
+
+.sidenav-open {
+    position: absolute;
+    top: 25px;
+    left: 10px;
+}

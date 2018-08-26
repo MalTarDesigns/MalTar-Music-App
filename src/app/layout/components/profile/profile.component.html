@@ -1,0 +1,66 @@
+<div class="profile-wrapper">
+
+    <div fxLayout fxLayoutGap="25px">
+        <div fxFlex="25" class="image-container">
+            <img src="assets/img/user.jpg" alt="User" class="user-picture">
+            <mat-icon class="user-edit">edit</mat-icon>
+        </div>
+        <div fxFlex="75">
+
+            <div class="user-info" fxLayout fxLayoutAlign="space-between center">
+                <div class="c-heading-2">{{userData.name}}</div>
+                <mat-chip-list>
+                    <mat-chip class="upload-music-chip">
+                        Upload Music
+                        <mat-icon class="chip-icon">add</mat-icon>
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+
+            <div class="summary-details" fxLayout fxLayoutGap="40px">
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <div class="c-heading-1">{{userData.followers}}</div>
+                    <div class="c-sub-heading">FOLLOWERS</div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <div class="c-heading-1">{{userData.musicPlays}}</div>
+                    <div class="c-sub-heading">MUSIC PLAYS</div>
+                </div>
+            </div>
+
+            <div class="user-bio text-color">
+                {{userData.bio}}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="profile-tabs">
+        <mat-tab-group [dynamicHeight]="true" color="warn">
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <div class="custom-label">PERSONAL TRACKS</div>
+                </ng-template>
+                <layout-personal-tracks></layout-personal-tracks>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <div class="custom-label">COMMENTS</div>
+                </ng-template>
+                COMMENTS CONTENT
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <div class="custom-label">BIO</div>
+                </ng-template>
+                BIO CONTENT
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <div class="custom-label">ALBUM </div>
+                </ng-template>
+                ALBUM CONTENT
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

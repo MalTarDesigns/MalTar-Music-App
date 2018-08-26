@@ -14,6 +14,10 @@ const appRoutes: Routes = [
   {
     path: 'user',
     loadChildren: './user/user.module#UserModule',
+  },
+  {
+    path: 'layout',
+    loadChildren: './layout/layout.module#LayoutModule'
   }
 ];
 @NgModule({

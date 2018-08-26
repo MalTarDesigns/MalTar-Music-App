@@ -1,0 +1,15 @@
+<div class="personal-tracks">
+
+    <div *ngFor="let item of personalTracks" class="custom-card" fxLayout fxLayoutGap="25px">
+        <div class="card-image">
+            <img src="assets/img/music-cover.png" alt="Music Cover" class="music-cover">
+        </div>
+        <div class="card-content">
+            <div class="card-title">{{item.name}}</div>
+            <div class="card-subtitle">{{item.type}}</div>
+            <div class="card-subtitle">{{item.date}}</div>
+            <div class="card-descritption text-color">{{item.description | slice:0:240 }}</div>
+        </div>
+    </div>
+
+</div>

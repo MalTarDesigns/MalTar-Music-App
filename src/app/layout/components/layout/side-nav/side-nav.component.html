@@ -1,0 +1,21 @@
+<div class="layout-side-nav" fxLayout="column" fxLayoutGap="580px">
+    <div>
+        <mat-nav-list>
+            <a mat-list-item class="text-color" *ngFor="let item of sideNavigationItems" routerLink="{{item.link}}" routerLinkActive="active"
+                fxLayout fxLayoutGap="20px">
+                <mat-icon class="nav-item-icon text-color">{{item.icon}}</mat-icon>
+                <div class="item-title text-color"> {{item.title}}</div>
+            </a>
+        </mat-nav-list>
+    </div>
+    <div>
+        <div class="purchase-text" fxLayout fxLayoutAlign="center center">
+            <mat-icon class="purchase-icon">shopping_cart</mat-icon>
+            PURCHASE MUSIC
+        </div>
+        <div fxLayout fxLayoutAlign="center center" style="position: relative;">
+            <img src="assets/img/music-cover.png" alt="Music Cover" class="music-purchase-cover">
+            <mat-icon class="purchase-video-icon">play_circle_outline</mat-icon>
+        </div>
+    </div>
+</div>

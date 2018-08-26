@@ -1,0 +1,14 @@
+<mat-toolbar fxLayout fxLayoutAlign="space-around center" class="layout-toolbar">
+    <img src="assets/img/logo.png" alt="Logo" class="logo" />
+    <div class="header-right-section" fxLayout fxLayoutAlign="center center">
+        <mat-nav-list fxLayout class="header-navigation-list">
+            <a mat-list-item *ngFor="let navItem of headerNavigationItems" class="header-nav-list-item" [routerLink]="navItem.link" routerLinkActive="active">
+                {{navItem.title}}
+            </a>
+        </mat-nav-list>
+        <div class="user-container">
+            <img src="assets/img/user.jpg" alt="User" class="user-img" />
+        </div>
+
+    </div>
+</mat-toolbar>

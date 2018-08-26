@@ -1,0 +1,37 @@
+<div class="layout-wrapper">
+    <layout-header></layout-header>
+
+    <div class="main-body">
+        <mat-sidenav-container>
+            <mat-sidenav #sidenav mode="side" [(opened)]="sidenavOpened">
+                <div class="sidenav-container">
+
+                    <div class="user-metadata" fxLayout fxLayoutAlign="center center">
+                        <img src="assets/img/user.jpg" alt="User" class="user-img" />
+                        <div class="user-name">John Doe</div>
+                        <button class="sidenav-close" *ngIf="sidenavOpened" mat-icon-button (click)="sidenav.close()">
+                            <mat-icon>arrow_back</mat-icon>
+                        </button>
+                    </div>
+                    <layout-side-nav></layout-side-nav>
+                </div>
+
+            </mat-sidenav>
+
+            <mat-sidenav-content >
+                <div fxLayout style="position: relative;">
+
+                    <button *ngIf="!sidenavOpened" mat-icon-button class="sidenav-open" (click)="sidenav.open()">
+                        <mat-icon>arrow_forward</mat-icon>
+                    </button>
+                    <div fxFlex>
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+                
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+
+    </div>
+
+</div>

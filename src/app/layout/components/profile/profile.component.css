@@ -1,0 +1,47 @@
+.profile-wrapper {
+    margin: 50px 50px 50px 25px;
+}
+
+.image-container {
+    position: relative;
+}
+
+.user-edit {
+    color: #ffffff;
+    background-color: #dc0000;
+    border-radius: 50%;
+    padding: 5px;
+    position: absolute;
+    right: 45px;
+    top: 10px;
+}
+
+.user-picture {
+    border-radius: 50%;
+    height: 225px;
+    width: 225px;
+}
+
+mat-chip.upload-music-chip {
+    color: #ffffff;
+    background-color: #dc0000;
+    cursor: pointer;
+}
+
+.chip-icon {
+    margin-left: 5px;
+}
+
+.user-info, .summary-details {
+    margin-bottom: 30px;
+}
+
+.profile-tabs {
+    margin-top: 60px;
+}
+
+.custom-label {
+    color: #dc0000;
+    font-size: 20px;
+    font-weight: 400;
+}

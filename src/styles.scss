@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$mytheme-primary: mat-palette($mat-blue);
+$mytheme-accent : mat-palette($mat-gray);
+$mytheme-warn : mat-palette($mat-red, A700);
+$mytheme-theme: mat-light-theme($mytheme-primary, $mytheme-accent, $mytheme-warn);
+
+@include angular-material-theme($mytheme-theme);
+
+
+body {
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+a {
+  cursor: pointer;
+}
+
+.text-danger {
+  color: #c40000;
+}
+
+.has-error .control-label {
+  color: #333;
+}
+
+
+.user-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.c-heading-1 {
+  font-size: 40px;
+}
+
+.c-heading-2 {
+  font-size: 30px;
+}
+
+.c-sub-heading {
+  font-size: 19px;
+}
+
+.text-color {
+  color: #6b6b6b;
+}
+
