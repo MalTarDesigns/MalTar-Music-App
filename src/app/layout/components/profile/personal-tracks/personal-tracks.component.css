@@ -2,8 +2,21 @@
     margin: 0;
 }
 
+.card-image {
+    margin-right: 25px;
+}
+
+.card-image-mobile {
+    margin-right: 15px;
+}
+
 .music-cover {
     width: 250px;
+    height: 100%;
+}
+
+.music-cover-mobile {
+    width: 150px;
     height: 100%;
 }
 
@@ -18,13 +31,30 @@
     margin-top: 20px;
 }
 
+.card-title-mobile {
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
 .card-subtitle {
     font-size: 18px;
     font-weight: 300;
     margin-top: 5px;
 }
 
+.card-subtitle-mobile {
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 3px;
+}
+
 .card-descritption {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.card-descritption-mobile {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

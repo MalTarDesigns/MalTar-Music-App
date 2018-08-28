@@ -1,14 +1,23 @@
 <div class="personal-tracks">
 
-    <div *ngFor="let item of personalTracks" class="custom-card" fxLayout fxLayoutGap="25px">
-        <div class="card-image">
-            <img src="assets/img/music-cover.png" alt="Music Cover" class="music-cover">
+    <div *ngFor="let item of personalTracks" class="custom-card" fxLayout>
+        <div class="card-image" [class.card-image-mobile]="mobileQuery.matches">
+            <img src="assets/img/music-cover.png" alt="Music Cover" class="music-cover" [class.music-cover-mobile]="mobileQuery.matches">
         </div>
         <div class="card-content">
-            <div class="card-title">{{item.name}}</div>
-            <div class="card-subtitle">{{item.type}}</div>
-            <div class="card-subtitle">{{item.date}}</div>
-            <div class="card-descritption text-color">{{item.description | slice:0:240 }}</div>
+            <div class="card-title" [class.card-title-mobile]="mobileQuery.matches">{{item.name}}</div>
+            <div class="card-subtitle" [class.card-subtitle-mobile]="mobileQuery.matches">{{item.type}}</div>
+            <div class="card-subtitle" [class.card-subtitle-mobile]="mobileQuery.matches">{{item.date}}</div>
+
+            <div class="card-descritption text-color" *ngIf="!mobileQuery.matches">
+                {{item.description | slice:0:240 }}
+                <span *ngIf="item.description.length > 250">...</span>
+            </div>
+            
+            <div class="card-descritption text-color" *ngIf="mobileQuery.matches">
+                {{item.description | slice:0:140 }}
+                <span *ngIf="item.description.length > 140">...</span>
+            </div>
         </div>
     </div>
 

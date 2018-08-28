@@ -1,6 +1,6 @@
-<div class="profile-wrapper">
+<div class="profile-wrapper" [style.marginRight.px]="mobileQuery.matches ? 25 : 50">
 
-    <div fxLayout fxLayoutGap="25px">
+    <div *ngIf="!mobileQuery.matches" fxLayout fxLayoutGap="25px">
         <div fxFlex="25" class="image-container">
             <img src="assets/img/user.jpg" alt="User" class="user-picture">
             <mat-icon class="user-edit">edit</mat-icon>
@@ -29,35 +29,68 @@
             </div>
 
             <div class="user-bio text-color">
-                {{userData.bio}}
+                {{userData.bio | slice:0:240 }}
+                <span *ngIf="userData.bio.length > 240">...</span>
+
             </div>
         </div>
 
     </div>
 
-    <div class="profile-tabs">
+    <div *ngIf="mobileQuery.matches">
+        <div fxLayout>
+            <div fxFlex="25" fxLayout="column" fxLayoutAlign="end center">
+                <div class="c-heading-1">{{userData.followers}}</div>
+                <div class="c-sub-heading">FOLLOWERS</div>
+            </div>
+            <div fxFlex="50" fxLayout="column" fxLayoutAlign="center center">
+                <div class="image-container">
+                    <img src="assets/img/user.jpg" alt="User" class="user-picture">
+                    <mat-icon class="user-edit">edit</mat-icon>
+                </div>
+                <div class="c-heading-2 user-title-mobile">{{userData.name}}</div>
+            </div>
+            <div fxFlex="25" fxLayout="column" fxLayoutAlign="end">
+                <button mat-icon-button class="upload-music-button-mobile">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <div fxLayout="column" fxLayoutAlign="stretch center">
+                    <div class="c-heading-1">{{userData.musicPlays}}</div>
+                    <div class="c-sub-heading">MUSIC PLAYS</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="user-bio-mobile text-color">
+            {{userData.bio | slice:0:150 }}
+            <span *ngIf="userData.bio.length > 150">...</span>
+        </div>
+
+    </div>
+
+    <div class="profile-tabs" [style.marginTop.px]="mobileQuery.matches ? 30 : 60">
         <mat-tab-group [dynamicHeight]="true" color="warn">
             <mat-tab>
                 <ng-template mat-tab-label>
-                    <div class="custom-label">PERSONAL TRACKS</div>
+                    <div class="custom-label" [style.fontSize.px]="mobileQuery.matches ? 15 : 20">PERSONAL TRACKS</div>
                 </ng-template>
                 <layout-personal-tracks></layout-personal-tracks>
             </mat-tab>
             <mat-tab>
                 <ng-template mat-tab-label>
-                    <div class="custom-label">COMMENTS</div>
+                    <div class="custom-label" [style.fontSize.px]="mobileQuery.matches ? 15 : 20">COMMENTS</div>
                 </ng-template>
                 COMMENTS CONTENT
             </mat-tab>
             <mat-tab>
                 <ng-template mat-tab-label>
-                    <div class="custom-label">BIO</div>
+                    <div class="custom-label" [style.fontSize.px]="mobileQuery.matches ? 15 : 20">BIO</div>
                 </ng-template>
                 BIO CONTENT
             </mat-tab>
             <mat-tab>
                 <ng-template mat-tab-label>
-                    <div class="custom-label">ALBUM </div>
+                    <div class="custom-label" [style.fontSize.px]="mobileQuery.matches ? 15 : 20">ALBUM </div>
                 </ng-template>
                 ALBUM CONTENT
             </mat-tab>

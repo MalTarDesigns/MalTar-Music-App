@@ -45,3 +45,21 @@ mat-chip.upload-music-chip {
     font-size: 20px;
     font-weight: 400;
 }
+
+.upload-music-button-mobile {
+    color: #dc0000;
+    border: 1px solid #dc0000;
+    line-height: 0;
+    position: absolute;
+    top: -30px;
+    right: 8px;
+}
+
+.user-title-mobile {
+    margin-top: 20px;
+}
+
+.user-bio-mobile {
+    padding: 20px 40px;
+    text-align: center;
+}

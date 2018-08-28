@@ -1,9 +1,10 @@
 <div class="layout-wrapper">
     <layout-header></layout-header>
 
-    <div class="main-body">
+    <div class="main-body" [style.marginTop.px]="mobileQuery.matches ? 0 : 100">
+    <!-- <div class="main-body" [class.example-is-mobile]="mobileQuery.matches"> -->
         <mat-sidenav-container>
-            <mat-sidenav #sidenav mode="side" [(opened)]="sidenavOpened">
+            <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" [(opened)]="!mobileQuery.matches && sidenavOpened">
                 <div class="sidenav-container">
 
                     <div class="user-metadata" fxLayout fxLayoutAlign="center center">
@@ -19,12 +20,15 @@
             </mat-sidenav>
 
             <mat-sidenav-content >
-                <div fxLayout style="position: relative;">
+                <div style="position: relative;">
 
-                    <button *ngIf="!sidenavOpened" mat-icon-button class="sidenav-open" (click)="sidenav.open()">
+                    <button *ngIf="!sidenavOpened && !mobileQuery.matches" mat-icon-button class="sidenav-open" (click)="sidenav.open()">
                         <mat-icon>arrow_forward</mat-icon>
                     </button>
-                    <div fxFlex>
+                    <button *ngIf="mobileQuery.matches" mat-icon-button class="sidenav-open dehaze-icon-button" (click)="sidenav.open()">
+                        <mat-icon>dehaze</mat-icon>
+                    </button>
+                    <div>
                         <router-outlet></router-outlet>
                     </div>
                 </div>

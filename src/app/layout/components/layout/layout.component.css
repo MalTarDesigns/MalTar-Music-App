@@ -1,10 +1,10 @@
 .main-body {
-    margin-top: 4px;
+    /* margin-top: 100px; */
 }
 
-mat-sidenav {
+/* mat-sidenav {
     width: 20%;
-}
+} */
 
 mat-sidenav-content {
     background-color: #ffffff;
@@ -30,6 +30,10 @@ mat-sidenav-content {
 
 .sidenav-open {
     position: absolute;
-    top: 25px;
+    top: -30px;
     left: 10px;
+}
+
+.dehaze-icon-button {
+    border: 1px solid black;
 }
