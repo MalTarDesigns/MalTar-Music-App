@@ -68,16 +68,25 @@
   <form [formGroup]="registerFormGroup" (ngSubmit)="onRegisterSubmit()">
     <h2>Create account</h2>
     <mat-form-field>
-      <input matInput placeholder="Email" dividerColor="accent" formControlName="email">
+      <input matInput placeholder="Email" dividerColor="accent" formControlName="email" required>
+      <mat-error *ngIf="registerFormGroup.hasError('required', 'email')">
+			Please enter your email
+		</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Password" type="password" dividerColor="accent" formControlName="password">
+      <input matInput placeholder="Password" type="password" dividerColor="accent" formControlName="password" required>
+      <mat-error *ngIf="registerFormGroup.hasError('required', 'password')">
+			Please enter your a password
+		</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Confirm password" type="password" dividerColor="accent" formControlName="confirmPassword">
+      <input matInput placeholder="Confirm password" type="password" dividerColor="accent" formControlName="confirmPassword" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="registerFormGroup.hasError('notSame')">
+			Passwords do not match
+		</mat-error>
     </mat-form-field>
     <!-- TODO: Disable button when form is not valid -->
-    <button mat-raised-button color="primary">Create yor account</button>
+    <button mat-raised-button color="primary" [disabled]="!registerFormGroup.valid">Create yor account</button>
     <hr>
     <p>Already have an account?
       <a routerLink="/user/login">Sign in</a>
