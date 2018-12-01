@@ -52,7 +52,7 @@ export class AuthEffects {
             uid: authInfo.user.uid,
             role: 'user',
             avatar: 'http://via.placeholder.com/100x100'
-          }
+          };
           return [
             new LoginSuccess(),
             new AddUserSuccess(newUser) // TODO: Create StoreUser

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BeatService } from '../../services/beat/beat.service';
-declare var $:any; // This allows you to use jQuery below
+declare var $: any; // This allows you to use jQuery below
 
 @Component({
   selector: 'music-player',
@@ -17,49 +17,49 @@ export class MusicPlayerComponent implements OnInit {
   currentSong: string;
   private is_playing = false;
   private playingtrack;
-  private audio_folder = "audio/";
-	private audio_ext = ".mp3"; 
+  private audio_folder = 'audio/';
+  private audio_ext = '.mp3';
 
   audio_index = 1;
 
-  //creates a intance of the service
-  constructor(private _beatService: BeatService) { 
-    
+  // creates a intance of the service
+  constructor(private _beatService: BeatService) {
 
-    //this.songs = _beatervice.getSongs(); // this should be placed in ngOnInit
+
+    // this.songs = _beatervice.getSongs(); // this should be placed in ngOnInit
 
   }
 
 
- private storedElement;
+  private storedElement;
 
 
 
-playAudio(event) {
+  playAudio(event) {
     event.preventDefault();
     if (this.playingtrack != event.target) { // New track
-        this.is_playing = true;
-        event.target.classList.add("fa-pause");
-        if (typeof(this.playingtrack) != 'undefined') {
-          this.playingtrack.classList.remove("fa-pause");
-        }
-        this.audio.pause();
-        this.audio.src = event.target.href;
-        this.audio.load();
-        this.audio.play();
+      this.is_playing = true;
+      event.target.classList.add('fa-pause');
+      if (typeof (this.playingtrack) !== 'undefined') {
+        this.playingtrack.classList.remove('fa-pause');
+      }
+      this.audio.pause();
+      this.audio.src = event.target.href;
+      this.audio.load();
+      this.audio.play();
     } else { // Same track
-        if (this.is_playing) {
-            this.audio.pause();
-            this.is_playing = false;
-            this.playingtrack.classList.remove("fa-pause");
-        } else { //Initial track 
-            this.audio.play();
-            this.is_playing = true;
-            this.playingtrack.classList.add("fa-pause");
-        }
+      if (this.is_playing) {
+        this.audio.pause();
+        this.is_playing = false;
+        this.playingtrack.classList.remove('fa-pause');
+      } else { //Initial track
+        this.audio.play();
+        this.is_playing = true;
+        this.playingtrack.classList.add('fa-pause');
+      }
     }
     this.playingtrack = event.target;
-}
+  }
 
   ngOnInit() {
     this.beat = this._beatService.getMusic();

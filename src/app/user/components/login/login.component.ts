@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     });
 
     this.errorMessage$ = this.store.select(getAuthError);
-    this.errorMessage$.subscribe(res => console.log(res))
+    this.errorMessage$.subscribe(res => console.log(res));
   }
 
   onLoginSubmit(): void {

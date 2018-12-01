@@ -1,4 +1,4 @@
-import { UserActions, UserActionTypes  } from './user.actions';
+import { UserActions, UserActionTypes } from './user.actions';
 
 export interface UserState {
   loaded: boolean;
@@ -27,7 +27,7 @@ export function reducer(state = initialState, action: UserActions) {
       return {
         ...state,
         loading: true,
-      }
+      };
     }
 
     case UserActionTypes.AddUserSuccess: {
@@ -46,7 +46,7 @@ export function reducer(state = initialState, action: UserActions) {
       return {
         ...state,
         error: action.payload
-      }
+      };
     }
 
     default: {

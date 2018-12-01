@@ -1,9 +1,9 @@
 import { AuthActions, AuthActionTypes } from './auth.actions';
 
 export interface AuthState {
-  pending: boolean
-  loggedIn: boolean
-  error: string
+  pending: boolean;
+  loggedIn: boolean;
+  error: string;
 }
 
 export const initialState: AuthState = {
@@ -19,7 +19,7 @@ export function reducer(state = initialState, action: AuthActions) {
       return {
         ...state,
         pending: true,
-      }
+      };
     }
 
     case AuthActionTypes.LoginSuccess: {
@@ -28,7 +28,7 @@ export function reducer(state = initialState, action: AuthActions) {
         pending: false,
         loggedIn: true,
         error: null
-      }
+      };
     }
 
     case AuthActionTypes.LoginFailure: {
@@ -45,7 +45,7 @@ export function reducer(state = initialState, action: AuthActions) {
         ...state,
         pending: false,
         loggedIn: false
-      }
+      };
     }
 
     default: {

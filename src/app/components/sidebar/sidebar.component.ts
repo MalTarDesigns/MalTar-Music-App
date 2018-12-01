@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-declare var $:any; // This allows you to use jQuery below
+declare var $: any; // This allows you to use jQuery below
 
 @Component({
   selector: 'sidebar',
@@ -7,9 +7,9 @@ declare var $:any; // This allows you to use jQuery below
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  
-  constructor() { 
-   
+
+  constructor() {
+
   }
 
   ngOnInit() {
@@ -19,8 +19,5 @@ export class SidebarComponent implements OnInit {
     console.log('working....');
     $("#wrapper").toggleClass("toggled");
   }
-
-    
-
 
 }

@@ -7,14 +7,14 @@ import { BeatService } from '../../services/beat/beat.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  beats: Object; 
+  beats: Object;
   constructor(private _beatService: BeatService) { }
 
   ngOnInit() {
     this._beatService.getBeats().subscribe(beats => {
-      this.beats = beats
+      this.beats = beats;
     });
   }
 
-  
+
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../auth/services/auth-service/auth.service';
 
 @Component({
@@ -12,9 +12,9 @@ export class ProfileComponent implements OnInit {
 
 
   constructor(
-    private _authService:AuthService,
-    private _router:Router
-  ) {  }
+    private _authService: AuthService,
+    private _router: Router
+  ) { }
 
   ngOnInit() {
     // this._authService.getProfile().subscribe(profile => {

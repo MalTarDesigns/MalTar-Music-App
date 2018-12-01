@@ -126,7 +126,7 @@
       "styleext": "css"
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": ""
     }
   }
 }
