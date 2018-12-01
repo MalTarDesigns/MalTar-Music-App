@@ -5,4 +5,4 @@ export const selectAuthState = createFeatureSelector<AuthState>('auth');
 
 export const getLoggedIn = createSelector(selectAuthState, (state: AuthState) => state.loggedIn);
 
-export const getError = createSelector(selectAuthState, (state: AuthState) => state.error);
+export const getAuthError = createSelector(selectAuthState, (state: AuthState) => state.error);

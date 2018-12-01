@@ -35,7 +35,7 @@ export class AuthEffects {
             new AddUserSuccess(user)
           ];
         }),
-        catchError(error => of(new EffectError(error)))
+        catchError(error => of(new LoginFailure(error)))
       )
     )
   );
@@ -55,7 +55,7 @@ export class AuthEffects {
           }
           return [
             new LoginSuccess(),
-            new AddUserSuccess(newUser)
+            new AddUserSuccess(newUser) // TODO: Create StoreUser
           ];
         }),
         catchError(error => of(new LoginFailure(error)))

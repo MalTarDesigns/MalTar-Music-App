@@ -36,7 +36,7 @@ export function reducer(state = initialState, action: AuthActions) {
         ...state,
         pending: false,
         loggedIn: false,
-        error: action.payload.error
+        error: action.payload
       }
     }
 

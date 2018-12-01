@@ -16,6 +16,7 @@ const routes: Routes = [];
     FooterComponent
   ],
   exports: [
+    CommonModule,
     NavbarComponent,
     FooterComponent,
   ],

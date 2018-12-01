@@ -24,7 +24,7 @@ export const errorsReducer: ActionReducer<Errors> = (
     case fromActions.EFFECT_ERROR:
       return {
         ...state,
-        effectError: action.payload.error
+        effectError: action.payload
       };
     default:
       return state;
