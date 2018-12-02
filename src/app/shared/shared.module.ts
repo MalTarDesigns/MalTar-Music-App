@@ -8,17 +8,26 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { GlobalErrorHandler } from './service/global.error';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../material.module';
+import { DropZoneDirective } from './directives/drop-zone.directive';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileSizePipe } from './pipes/file-size.pipe';
 
 const routes: Routes = [];
 @NgModule({
   declarations: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DropZoneDirective,
+    FileUploadComponent,
+    FileSizePipe
   ],
   exports: [
     CommonModule,
     NavbarComponent,
     FooterComponent,
+    DropZoneDirective,
+    FileUploadComponent,
+    FileSizePipe
   ],
   imports: [
     CommonModule,
