@@ -12,6 +12,7 @@ import { DropZoneDirective } from './directives/drop-zone.directive';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { FileSizePipe } from './pipes/file-size.pipe';
 import { UploadMusicBtnComponent } from './components/upload-music-btn/upload-music-btn.component';
+import { UploadImageBtnComponent } from './components/upload-image-btn/upload-image-btn.component';
 
 const routes: Routes = [];
 @NgModule({
@@ -21,7 +22,8 @@ const routes: Routes = [];
     DropZoneDirective,
     FileUploadComponent,
     FileSizePipe,
-    UploadMusicBtnComponent
+    UploadMusicBtnComponent,
+    UploadImageBtnComponent
   ],
   exports: [
     CommonModule,
@@ -30,7 +32,8 @@ const routes: Routes = [];
     DropZoneDirective,
     FileUploadComponent,
     FileSizePipe,
-    UploadMusicBtnComponent
+    UploadMusicBtnComponent,
+    UploadImageBtnComponent
   ],
   imports: [
     CommonModule,

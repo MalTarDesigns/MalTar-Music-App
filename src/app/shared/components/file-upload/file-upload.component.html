@@ -1,4 +1,4 @@
-<!-- <div class="dropzone"
+<div class="dropzone"
      dropZone
      (hovered)="toggleHover($event)"
      (dropped)="startUpload($event)"
@@ -53,10 +53,10 @@
   <button (click)="task.cancel()" class="button is-danger" [disabled]="!isActive(snap)">Cancel</button>
   <button (click)="task.resume()" class="button is-info"   [disabled]="!(snap?.state === 'paused')">Resume</button>
 
-</div> -->
+</div>
 
-<input class="file-input" type="file" (change)="startUpload($event.target.files)" #imgFileInput>
-<i class="material-icons add-file" (click)="imgFileInput.click()">add_circle</i>
-
+<!-- // The below is used just for the upload without the drop zone // -->
+<!-- <input class="file-input" type="file" (change)="startUpload($event.target.files)" #imgFileInput>
+<i class="material-icons add-file" (click)="imgFileInput.click()">add_circle</i> -->
 
 

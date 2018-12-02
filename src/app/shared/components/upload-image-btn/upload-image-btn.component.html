@@ -1,0 +1,4 @@
+<input class="file-input" type="file" (change)="startUpload($event.target.files)" #fileInput>
+<button class="upload-image-btn" mat-mini-fab (click)="fileInput.click()">
+  <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+</button>
