@@ -5,11 +5,11 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
-import { GlobalErrorHandler } from './service/global.error';
+import { GlobalErrorHandler } from './services/global.error';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { DropZoneDirective } from './directives/drop-zone.directive';
-import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { FileSizePipe } from './pipes/file-size.pipe';
 
 const routes: Routes = [];
@@ -31,7 +31,7 @@ const routes: Routes = [];
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes), // TODO: Move navbar and footer compoment then remove this import
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     MaterialModule
   ],

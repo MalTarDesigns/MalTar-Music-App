@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, Input } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable, Subscription } from 'rxjs';
@@ -26,7 +26,8 @@ export class FileUploadComponent implements OnDestroy {
   // State for dropzone CSS toggling
   isHovering: boolean;
 
-  private downloadURLSubscription: Subscription
+  private downloadURLSubscription: Subscription;
+  private updateFirestoreSubscription: Subscription;
 
   constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
 
@@ -38,26 +39,30 @@ export class FileUploadComponent implements OnDestroy {
     // The File object
     const file = event.item(0)
 
-    // Client-side validation example // TODO: Fix this validation it is not working correctly
+    // Client-side validation
     const fileType = file.type.split('/')[0]
-
     if (!~this.supportedFileTypes.indexOf(fileType)) {
       console.error('unsupported file type :( ')
       return;
     }
 
-    // The storage path
-    const path = `test/${new Date().getTime()}_${file.name}`;
+    // Set the storage path
+    let path;
+    if (fileType === 'audio') {
+      path = `audios/${new Date().getTime()}_${file.name}`;
+    } else if (fileType === 'image') {
+      path = `images/${new Date().getTime()}_${file.name}`;
+    }
 
     // Totally optional metadata
-    const customMetadata = { app: 'My AngularFire App!' };
+    const customMetadata = { app: 'MalTar Music App!' };
 
     // The main task
-    this.task = this.storage.upload(path, file, { customMetadata })
+    this.task = this.storage.upload(path, file, { customMetadata });
 
     // Progress monitoring
     this.percentage = this.task.percentageChanges();
-    this.snapshot = this.task.snapshotChanges()
+    this.snapshot = this.task.snapshotChanges();
 
     // The file's download URL
     this.downloadURLSubscription = this.snapshot.pipe(
@@ -65,14 +70,19 @@ export class FileUploadComponent implements OnDestroy {
     ).subscribe();
 
     // Save File Information in the Firestore Database
-    this.snapshot = this.task.snapshotChanges().pipe(
+    this.updateFirestoreSubscription = this.snapshot.pipe(
       tap(snap => {
         if (snap.bytesTransferred === snap.totalBytes) {
+          console.log('File has been uploaded ✓');
           // Update firestore on completion
-          this.db.collection('photos').add({ path, size: snap.totalBytes })
+          if (fileType === 'audio') {
+            this.db.collection('audios').add({ path, size: snap.totalBytes })
+          } else if (fileType === 'image') {
+            this.db.collection('images').add({ path, size: snap.totalBytes })
+          }
         }
       })
-    )
+    ).subscribe();
   }
 
   // Determines if the upload task is active
@@ -83,6 +93,10 @@ export class FileUploadComponent implements OnDestroy {
   ngOnDestroy() {
     if (this.downloadURLSubscription) {
       this.downloadURLSubscription.unsubscribe();
+    }
+
+    if (this.updateFirestoreSubscription) {
+      this.updateFirestoreSubscription.unsubscribe();
     }
   }
 
