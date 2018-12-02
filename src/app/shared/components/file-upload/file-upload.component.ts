@@ -29,7 +29,7 @@ export class FileUploadComponent implements OnDestroy {
   private downloadURLSubscription: Subscription;
   private updateFirestoreSubscription: Subscription;
 
-  constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
+  constructor(protected storage: AngularFireStorage, protected db: AngularFirestore) { }
 
   toggleHover(event: boolean) {
     this.isHovering = event;

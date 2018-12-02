@@ -7,9 +7,8 @@
       <img calss="avatar" src="http://via.placeholder.com/100x100" alt="Avatar">
     </div>
     <div fxFlex="85" class="profile__details">
+      <upload-music-btn [supportedFileTypes]="['audio']"></upload-music-btn>
       <h2>John Doe</h2>
-      <!-- TODO: Make new component for this button -->
-      <file-upload [supportedFileTypes]="['audio']"></file-upload>
       <div class="profile__data">
         <div class="number-of-followers">
           <span>165</span>

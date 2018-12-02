@@ -1,0 +1,22 @@
+.profile {
+    height: auto;
+    padding: 5px;
+    .profile__pic {
+        text-align: center;
+        img {
+            border-radius: 50%
+        }
+        .avatar {
+            border-radius: 50%;
+        }
+    }
+    .number-of-followers {
+        display: inline-block;
+    }
+    .number-of-plays {
+        display: inline-block;
+    }
+    upload-music-btn {
+        float: right;
+    }
+}
