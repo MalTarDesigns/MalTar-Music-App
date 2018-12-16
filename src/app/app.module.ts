@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 
 import { AuthModule } from './auth/auth.module';
+import { DynamicFormModule } from './dynamic-form/dynamic-form.module';
+
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routes';
 
@@ -26,6 +28,7 @@ import { AuthGuard } from './auth/auth.guard';
     BrowserModule,
     BrowserAnimationsModule,
     AuthModule,
+    DynamicFormModule,
     AppRoutes,
     StoreRouterConnectingModule,
     EffectsModule.forRoot([]),
