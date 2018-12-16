@@ -13,6 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DynamicFormModule } from '../dynamic-form/dynamic-form.module';
 
 @Component({
   selector: 'app-user',
@@ -48,6 +49,7 @@ const routes: Routes = [
     MaterialModule,
     SharedModule,
     ReactiveFormsModule,
+    DynamicFormModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('user', reducer),
     EffectsModule.forFeature([UserEffects])
