@@ -13,6 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TrackCardComponent } from './components/track-card/track-card.component';
 
 @Component({
   selector: 'app-user',
@@ -42,7 +43,8 @@ const routes: Routes = [
     UserComponent,
     NewsFeedComponent,
     ProfileComponent,
-    ProfileTabsComponent
+    ProfileTabsComponent,
+    TrackCardComponent
   ],
   imports: [
     MaterialModule,

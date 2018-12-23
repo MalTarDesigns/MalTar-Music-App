@@ -1,0 +1,16 @@
+.track-img {
+    width: 100%
+}
+
+// Desktops and laptops
+@media only screen and (min-width: 768px) {
+    .mat-card {
+        display: flex;
+        .track-img {
+            width: 55%;
+            max-width: 200px;
+            min-width: 200px;
+            margin-right: 1rem;
+        }
+    }
+}
